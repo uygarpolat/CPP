@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 12:30:17 by upolat            #+#    #+#             */
-/*   Updated: 2024/08/29 15:37:44 by upolat           ###   ########.fr       */
+/*   Updated: 2024/08/29 17:25:23 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,18 @@ void	ft_cout(std::string input, int i)
 
 void getInput(const std::string& prompt, std::string& inputField)
 {
+    std::cout << prompt;
+    if (!std::getline(std::cin, inputField) || std::cin.eof())
+		exit(0);
+
 	while (inputField.empty())
 	{
-        std::cout << prompt;
-        std::getline(std::cin, inputField);
-        if (inputField.empty())
-            std::cout << "Input cannot be empty. Please try again.\n";
-    }
+		ft_cout("Input cannot be empty. Please try again.", 1);
+		ft_cout(prompt, 0);
+		if (!std::getline(std::cin, inputField) || std::cin.eof())
+			exit(0);
+	}
 }
-
 
 void	ft_add(class PhoneBook *phonebook)
 {
@@ -107,7 +110,8 @@ void	ft_search(class PhoneBook *phonebook)
 		ft_cout("Enter the index number for user's contact info: ", 0);
 		std::cin >> i;
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		if (std::cin.fail()) {
+		if (std::cin.fail())
+		{
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             ft_cout("Please enter a valid numeric index.", 1);
@@ -129,9 +133,10 @@ int	main(void)
 	{
 		ft_cout("Please Enter one of the following 3 commands: ADD, SEARCH, EXIT", 1);
 		ft_cout("Your input: ", 0);
-		std::getline(std::cin, userInput);
-		if (userInput.empty())
+		if (!std::getline(std::cin, userInput) || std::cin.eof())
 			exit(0);
+		//if (userInput.empty())
+		//	exit(0);
 		if (userInput.compare("ADD") == 0)
 			ft_add(&phonebook);
 		else if (userInput.compare("SEARCH") == 0)
