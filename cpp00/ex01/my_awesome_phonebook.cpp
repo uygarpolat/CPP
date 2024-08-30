@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 12:30:17 by upolat            #+#    #+#             */
-/*   Updated: 2024/08/30 11:34:18 by upolat           ###   ########.fr       */
+/*   Updated: 2024/08/30 13:56:06 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ void getInput(const std::string& prompt, std::string& inputField)
 		ft_cout(prompt, 0);
 		if (!std::getline(std::cin, inputField) || std::cin.eof())
 			exit(0);
+		trimLeadingWhitespace(inputField);
 	}
 }
 
@@ -164,8 +165,6 @@ int	main(void)
 		ft_cout("Your input: ", 0);
 		if (!std::getline(std::cin, userInput) || std::cin.eof())
 			exit(0);
-		//if (userInput.empty())
-		//	exit(0);
 		if (userInput.compare("ADD") == 0)
 			ft_add(&phonebook);
 		else if (userInput.compare("SEARCH") == 0)
