@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 12:30:17 by upolat            #+#    #+#             */
-/*   Updated: 2024/08/29 17:25:23 by upolat           ###   ########.fr       */
+/*   Updated: 2024/08/30 11:34:18 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,15 @@ class PhoneBook
 	public:
 		Contact contact[8];
 		int		counter;
-		PhoneBook(int i)
+		
+		PhoneBook() : counter(0)
 		{
-			counter = i;
+			std::cout << "PhoneBook created.\n";
+		}
+
+    	~PhoneBook()
+		{
+			std::cout << "PhoneBook destroyed.\n";
 		}
 };
 
@@ -57,11 +63,23 @@ void	ft_cout(std::string input, int i)
 		std::cout << std::endl;
 }
 
+void trimLeadingWhitespace(std::string& input)
+{
+	size_t start = input.find_first_not_of(" \t\n\r\f\v");
+	if (start != std::string::npos)
+        input = input.substr(start);
+	else
+		input.clear();
+}
+
+
 void getInput(const std::string& prompt, std::string& inputField)
 {
     std::cout << prompt;
     if (!std::getline(std::cin, inputField) || std::cin.eof())
 		exit(0);
+
+	trimLeadingWhitespace(inputField);
 
 	while (inputField.empty())
 	{
@@ -118,7 +136,18 @@ void	ft_search(class PhoneBook *phonebook)
         } 
 		else if (i >= 0 && i < 8 && i < phonebook->counter)
 		{
+			ft_cout("-----", 1);
+			ft_cout("Name: ", 0);
+			ft_cout(phonebook->contact[i].FirstName, 1);
+			ft_cout("Last Name: ", 0);
+			ft_cout(phonebook->contact[i].LastName, 1);
+			ft_cout("Nickname: ", 0);
+			ft_cout(phonebook->contact[i].Nickname, 1);
+			ft_cout("Phone number: : ", 0);
 			ft_cout(phonebook->contact[i].PhoneNumber, 1);
+			ft_cout("Darkest Secret: ", 0);
+			ft_cout(phonebook->contact[i].DarkestSecret, 1);
+			ft_cout("-----", 1);
 			break ;
 		}
 	}
@@ -126,7 +155,7 @@ void	ft_search(class PhoneBook *phonebook)
 
 int	main(void)
 {
-	PhoneBook	phonebook(0);
+	PhoneBook	phonebook;
 	std::string	userInput;
 
 	while (true)
@@ -142,7 +171,7 @@ int	main(void)
 		else if (userInput.compare("SEARCH") == 0)
 			ft_search(&phonebook);
 		else if (userInput.compare("EXIT") == 0)
-			return (ft_cout("Closing phonebook!", 1), 0);
+			return (0);
 		else
 			ft_cout("Error: invalid input.", 1);
 	}
