@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 12:30:17 by upolat            #+#    #+#             */
-/*   Updated: 2024/08/30 13:56:06 by upolat           ###   ########.fr       */
+/*   Updated: 2024/08/31 13:45:17 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,7 +144,7 @@ void	ft_search(class PhoneBook *phonebook)
 			ft_cout(phonebook->contact[i].LastName, 1);
 			ft_cout("Nickname: ", 0);
 			ft_cout(phonebook->contact[i].Nickname, 1);
-			ft_cout("Phone number: : ", 0);
+			ft_cout("Phone number: ", 0);
 			ft_cout(phonebook->contact[i].PhoneNumber, 1);
 			ft_cout("Darkest Secret: ", 0);
 			ft_cout(phonebook->contact[i].DarkestSecret, 1);
