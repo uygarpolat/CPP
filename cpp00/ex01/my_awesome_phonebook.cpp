@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 12:30:17 by upolat            #+#    #+#             */
-/*   Updated: 2024/08/31 13:45:17 by upolat           ###   ########.fr       */
+/*   Updated: 2024/09/04 14:30:27 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,58 @@
 
 class Contact
 {
+	private:
+		std::string	_FirstName;
+		std::string	_LastName;
+		std::string	_Nickname;
+		std::string	_PhoneNumber;
+		std::string	_DarkestSecret;
+
 	public:
-		std::string	FirstName;
-		std::string	LastName;
-		std::string	Nickname;
-		std::string	PhoneNumber;
-		std::string	DarkestSecret;
+		void setFirstName(std::string FirstName)
+		{
+			_FirstName = FirstName;
+		}
+		std::string getFirstName()
+		{
+			return (_FirstName);
+		}
+	public:
+		void setLastName(std::string LastName)
+		{
+			_LastName = LastName;
+		}
+		std::string getLastName()
+		{
+			return (_LastName);
+		}
+	public:
+		void setNickname(std::string Nickname)
+		{
+			_Nickname = Nickname;
+		}
+		std::string getNickname()
+		{
+			return (_Nickname);
+		}
+	public:
+		void setPhoneNumber(std::string PhoneNumber)
+		{
+			_PhoneNumber = PhoneNumber;
+		}
+		std::string getPhoneNumber()
+		{
+			return (_PhoneNumber);
+		}
+	public:
+		void setDarkestSecret(std::string DarkestSecret)
+		{
+			_DarkestSecret = DarkestSecret;
+		}
+		std::string getDarkestSecret()
+		{
+			return (_DarkestSecret);
+		}
 };
 
 class PhoneBook
@@ -46,7 +92,7 @@ class PhoneBook
 std::string formatColumn(const std::string& text, int width)
 {
     if (text.length() > static_cast<std::string::size_type>(width))
-        return text.substr(0, width - 1) + ".";
+        return (text.substr(0, width - 1) + ".");
 	else
 	{
 		// Return right-aligned text within the specified width
@@ -96,11 +142,11 @@ void	ft_add(class PhoneBook *phonebook)
 
 	// Makes sure to ignore newline characters from previous reads.
 	//std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-	getInput("Enter first name: ", phonebook->contact[phonebook->counter % 8].FirstName);
-	getInput("Enter last name: ", phonebook->contact[phonebook->counter % 8].LastName);
-	getInput("Enter nickname: ", phonebook->contact[phonebook->counter % 8].Nickname);
-	getInput("Enter phone number: ", phonebook->contact[phonebook->counter % 8].PhoneNumber);
-	getInput("Enter darkest secret: ", phonebook->contact[phonebook->counter % 8].DarkestSecret);
+	getInput("Enter first name: ", phonebook->contact[phonebook->counter % 8].setFirstName());
+	getInput("Enter last name: ", phonebook->contact[phonebook->counter % 8].setLastName());
+	getInput("Enter nickname: ", phonebook->contact[phonebook->counter % 8].setNickname());
+	getInput("Enter phone number: ", phonebook->contact[phonebook->counter % 8].setPhoneNumber());
+	getInput("Enter darkest secret: ", phonebook->contact[phonebook->counter % 8].setDarkestSecret());
 	phonebook->counter++;
 }
 
@@ -117,9 +163,9 @@ void	ft_search(class PhoneBook *phonebook)
 	while (counter)
 	{
 		std::cout << i << "|"
-					<< formatColumn(phonebook->contact[i].FirstName, 10) << "|"
-					<< formatColumn(phonebook->contact[i].LastName, 10) << "|"
-					<< formatColumn(phonebook->contact[i].Nickname, 10) << "|"
+					<< formatColumn(phonebook->contact[i].getFirstName(), 10) << "|"
+					<< formatColumn(phonebook->contact[i].getLastName(), 10) << "|"
+					<< formatColumn(phonebook->contact[i].getNickname(), 10) << "|"
 					<< std::endl;
 		i++;
 		counter--;
@@ -139,15 +185,15 @@ void	ft_search(class PhoneBook *phonebook)
 		{
 			ft_cout("-----", 1);
 			ft_cout("Name: ", 0);
-			ft_cout(phonebook->contact[i].FirstName, 1);
+			ft_cout(phonebook->contact[i].getFirstName(), 1);
 			ft_cout("Last Name: ", 0);
-			ft_cout(phonebook->contact[i].LastName, 1);
+			ft_cout(phonebook->contact[i].getLastName(), 1);
 			ft_cout("Nickname: ", 0);
-			ft_cout(phonebook->contact[i].Nickname, 1);
+			ft_cout(phonebook->contact[i].getNickname(), 1);
 			ft_cout("Phone number: ", 0);
-			ft_cout(phonebook->contact[i].PhoneNumber, 1);
+			ft_cout(phonebook->contact[i].getPhoneNumber(), 1);
 			ft_cout("Darkest Secret: ", 0);
-			ft_cout(phonebook->contact[i].DarkestSecret, 1);
+			ft_cout(phonebook->contact[i].getDarkestSecret(), 1);
 			ft_cout("-----", 1);
 			break ;
 		}
