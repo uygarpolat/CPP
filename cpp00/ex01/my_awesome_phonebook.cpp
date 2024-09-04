@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 12:30:17 by upolat            #+#    #+#             */
-/*   Updated: 2024/09/04 15:45:20 by upolat           ###   ########.fr       */
+/*   Updated: 2024/09/04 15:49:40 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,19 +153,20 @@ void	ft_add(class PhoneBook *phonebook)
 
 	std::string	input;
 	input = getInput("Enter first name: ");
-    phonebook->contact[phonebook->counter % 8].setFirstName(input);
+	phonebook->contact[phonebook->counter % 8].setFirstName(input);
 
-    input = getInput("Enter last name: ");
-    phonebook->contact[phonebook->counter % 8].setLastName(input);
+	input = getInput("Enter last name: ");
+	phonebook->contact[phonebook->counter % 8].setLastName(input);
 
-    input = getInput("Enter nickname: ");
-    phonebook->contact[phonebook->counter % 8].setNickname(input);
+	input = getInput("Enter nickname: ");
+	phonebook->contact[phonebook->counter % 8].setNickname(input);
 
-    input = getInput("Enter phone number: ");
-    phonebook->contact[phonebook->counter % 8].setPhoneNumber(input);
+	input = getInput("Enter phone number: ");
+	phonebook->contact[phonebook->counter % 8].setPhoneNumber(input);
 
-    input = getInput("Enter darkest secret: ");
-    phonebook->contact[phonebook->counter % 8].setDarkestSecret(input);
+	input = getInput("Enter darkest secret: ");
+	phonebook->contact[phonebook->counter % 8].setDarkestSecret(input);
+	
 	phonebook->counter++;
 }
 
