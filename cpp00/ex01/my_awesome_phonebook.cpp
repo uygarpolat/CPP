@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 12:30:17 by upolat            #+#    #+#             */
-/*   Updated: 2024/09/04 14:30:27 by upolat           ###   ########.fr       */
+/*   Updated: 2024/09/04 15:45:20 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,8 +119,10 @@ void trimLeadingWhitespace(std::string& input)
 }
 
 
-void getInput(const std::string& prompt, std::string& inputField)
+std::string getInput(const std::string& prompt)
 {
+	std::string	inputField;
+
     std::cout << prompt;
     if (!std::getline(std::cin, inputField) || std::cin.eof())
 		exit(0);
@@ -135,6 +137,7 @@ void getInput(const std::string& prompt, std::string& inputField)
 			exit(0);
 		trimLeadingWhitespace(inputField);
 	}
+	return (inputField);
 }
 
 void	ft_add(class PhoneBook *phonebook)
@@ -142,11 +145,27 @@ void	ft_add(class PhoneBook *phonebook)
 
 	// Makes sure to ignore newline characters from previous reads.
 	//std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-	getInput("Enter first name: ", phonebook->contact[phonebook->counter % 8].setFirstName());
-	getInput("Enter last name: ", phonebook->contact[phonebook->counter % 8].setLastName());
-	getInput("Enter nickname: ", phonebook->contact[phonebook->counter % 8].setNickname());
-	getInput("Enter phone number: ", phonebook->contact[phonebook->counter % 8].setPhoneNumber());
-	getInput("Enter darkest secret: ", phonebook->contact[phonebook->counter % 8].setDarkestSecret());
+	//getInput("Enter first name: ", phonebook->contact[phonebook->counter % 8].setFirstName());
+	//getInput("Enter last name: ", phonebook->contact[phonebook->counter % 8].setLastName());
+	//getInput("Enter nickname: ", phonebook->contact[phonebook->counter % 8].setNickname());
+	//getInput("Enter phone number: ", phonebook->contact[phonebook->counter % 8].setPhoneNumber());
+	//getInput("Enter darkest secret: ", phonebook->contact[phonebook->counter % 8].setDarkestSecret());
+
+	std::string	input;
+	input = getInput("Enter first name: ");
+    phonebook->contact[phonebook->counter % 8].setFirstName(input);
+
+    input = getInput("Enter last name: ");
+    phonebook->contact[phonebook->counter % 8].setLastName(input);
+
+    input = getInput("Enter nickname: ");
+    phonebook->contact[phonebook->counter % 8].setNickname(input);
+
+    input = getInput("Enter phone number: ");
+    phonebook->contact[phonebook->counter % 8].setPhoneNumber(input);
+
+    input = getInput("Enter darkest secret: ");
+    phonebook->contact[phonebook->counter % 8].setDarkestSecret(input);
 	phonebook->counter++;
 }
 
