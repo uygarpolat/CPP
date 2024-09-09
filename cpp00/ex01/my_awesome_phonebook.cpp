@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 11:04:31 by upolat            #+#    #+#             */
-/*   Updated: 2024/09/09 16:08:43 by upolat           ###   ########.fr       */
+/*   Updated: 2024/09/09 16:22:00 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,6 +173,8 @@ void	PhoneBook::ft_search(class PhoneBook *phonebook)
 		ft_cout("Enter the index number for user's contact info: ", 0);
 		std::cin >> i;
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		if (std::cin.eof())
+			exit(0);
 		if (std::cin.fail())
 		{
             std::cin.clear();
@@ -181,7 +183,7 @@ void	PhoneBook::ft_search(class PhoneBook *phonebook)
         } 
 		else if (i >= 0 && i < 8 && i < phonebook->counter)
 		{
-			ft_cout("-----", 1);
+			ft_cout("----- CONTACT DETAILS -----", 1);
 			ft_cout("Name: ", 0);
 			ft_cout(phonebook->contact[i].getFirstName(), 1);
 			ft_cout("Last Name: ", 0);
@@ -192,7 +194,7 @@ void	PhoneBook::ft_search(class PhoneBook *phonebook)
 			ft_cout(phonebook->contact[i].getPhoneNumber(), 1);
 			ft_cout("Darkest Secret: ", 0);
 			ft_cout(phonebook->contact[i].getDarkestSecret(), 1);
-			ft_cout("-----", 1);
+			ft_cout("----- CONTACT DETAILS -----", 1);
 			break ;
 		}
 	}
