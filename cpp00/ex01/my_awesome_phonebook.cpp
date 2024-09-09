@@ -5,89 +5,67 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/24 12:30:17 by upolat            #+#    #+#             */
-/*   Updated: 2024/09/04 15:49:40 by upolat           ###   ########.fr       */
+/*   Created: 2024/09/09 11:04:31 by upolat            #+#    #+#             */
+/*   Updated: 2024/09/09 16:08:43 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <iomanip>
-#include <string>
-#include <sstream>
-#include <limits>
+#include "my_awesome_phonebook.hpp"
 
-class Contact
+PhoneBook::PhoneBook() : counter(0)
 {
-	private:
-		std::string	_FirstName;
-		std::string	_LastName;
-		std::string	_Nickname;
-		std::string	_PhoneNumber;
-		std::string	_DarkestSecret;
+	std::cout << "PhoneBook created." << std::endl;
+}
 
-	public:
-		void setFirstName(std::string FirstName)
-		{
-			_FirstName = FirstName;
-		}
-		std::string getFirstName()
-		{
-			return (_FirstName);
-		}
-	public:
-		void setLastName(std::string LastName)
-		{
-			_LastName = LastName;
-		}
-		std::string getLastName()
-		{
-			return (_LastName);
-		}
-	public:
-		void setNickname(std::string Nickname)
-		{
-			_Nickname = Nickname;
-		}
-		std::string getNickname()
-		{
-			return (_Nickname);
-		}
-	public:
-		void setPhoneNumber(std::string PhoneNumber)
-		{
-			_PhoneNumber = PhoneNumber;
-		}
-		std::string getPhoneNumber()
-		{
-			return (_PhoneNumber);
-		}
-	public:
-		void setDarkestSecret(std::string DarkestSecret)
-		{
-			_DarkestSecret = DarkestSecret;
-		}
-		std::string getDarkestSecret()
-		{
-			return (_DarkestSecret);
-		}
-};
-
-class PhoneBook
+PhoneBook::~PhoneBook()
 {
-	public:
-		Contact contact[8];
-		int		counter;
-		
-		PhoneBook() : counter(0)
-		{
-			std::cout << "PhoneBook created.\n";
-		}
+	std::cout << "PhoneBook destroyed." << std::endl;
+}
 
-    	~PhoneBook()
-		{
-			std::cout << "PhoneBook destroyed.\n";
-		}
-};
+void Contact::setFirstName(std::string& FirstName)
+{
+		_FirstName = FirstName;
+}
+std::string Contact::getFirstName() const
+{
+	return (_FirstName);
+}
+
+void Contact::setLastName(std::string& LastName)
+{
+		_LastName = LastName;
+}
+std::string Contact::getLastName() const
+{
+	return (_LastName);
+}
+
+void Contact::setNickname(std::string& Nickname)
+{
+	_Nickname = Nickname;
+}
+std::string Contact::getNickname() const
+{
+	return (_Nickname);
+}
+
+void Contact::setPhoneNumber(std::string& PhoneNumber)
+{
+	_PhoneNumber = PhoneNumber;
+}
+std::string Contact::getPhoneNumber() const
+{
+	return (_PhoneNumber);
+}
+
+void Contact::setDarkestSecret(std::string& DarkestSecret)
+{
+	_DarkestSecret = DarkestSecret;
+}
+std::string Contact::getDarkestSecret() const
+{
+	return (_DarkestSecret);
+}
 
 std::string formatColumn(const std::string& text, int width)
 {
@@ -140,7 +118,7 @@ std::string getInput(const std::string& prompt)
 	return (inputField);
 }
 
-void	ft_add(class PhoneBook *phonebook)
+void	PhoneBook::ft_add(class PhoneBook *phonebook)
 {
 
 	// Makes sure to ignore newline characters from previous reads.
@@ -170,7 +148,7 @@ void	ft_add(class PhoneBook *phonebook)
 	phonebook->counter++;
 }
 
-void	ft_search(class PhoneBook *phonebook)
+void	PhoneBook::ft_search(class PhoneBook *phonebook)
 {
 	int	counter;
 	int	i;
@@ -217,27 +195,5 @@ void	ft_search(class PhoneBook *phonebook)
 			ft_cout("-----", 1);
 			break ;
 		}
-	}
-}
-
-int	main(void)
-{
-	PhoneBook	phonebook;
-	std::string	userInput;
-
-	while (true)
-	{
-		ft_cout("Please Enter one of the following 3 commands: ADD, SEARCH, EXIT", 1);
-		ft_cout("Your input: ", 0);
-		if (!std::getline(std::cin, userInput) || std::cin.eof())
-			exit(0);
-		if (userInput.compare("ADD") == 0)
-			ft_add(&phonebook);
-		else if (userInput.compare("SEARCH") == 0)
-			ft_search(&phonebook);
-		else if (userInput.compare("EXIT") == 0)
-			return (0);
-		else
-			ft_cout("Error: invalid input.", 1);
 	}
 }
