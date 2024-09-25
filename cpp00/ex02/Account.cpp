@@ -6,8 +6,13 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 22:55:49 by upolat            #+#    #+#             */
-/*   Updated: 2024/09/25 09:34:39 by upolat           ###   ########.fr       */
+/*   Updated: 2024/09/25 10:20:30 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include Accound.hpp
 
+static void	Account::displayAccoundInfos( void)
+{
+	
+}
