@@ -5,16 +5,16 @@
 #                                                     +:+ +:+         +:+      #
 #    By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/08/16 16:07:53 by upolat            #+#    #+#              #
-#    Updated: 2024/11/18 08:53:49 by upolat           ###   ########.fr        #
+#    Created: 2024/11/18 08:57:15 by upolat            #+#    #+#              #
+#    Updated: 2024/11/18 08:57:50 by upolat           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = megaphone
+NAME = my_awesome_phonebook
 CXX = g++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++23
 
-SOURCES = megaphone.cpp
+SOURCES = main.cpp my_awesome_phonebook.cpp
 
 OBJECTS = $(SOURCES:.cpp=.o)
 
