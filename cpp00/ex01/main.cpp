@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 13:44:34 by upolat            #+#    #+#             */
-/*   Updated: 2024/09/09 16:04:51 by upolat           ###   ########.fr       */
+/*   Updated: 2024/11/18 09:08:40 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,5 @@ int	main(void)
 		else
 			std::cout << "Error: invalid input." << std::endl;
 	}
+	return (0);
 }
