@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/19 22:10:24 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/19 22:10:25 by upolat           ###   ########.fr       */
+/*   Created: 2024/11/20 01:23:06 by upolat            #+#    #+#             */
+/*   Updated: 2024/11/20 01:23:09 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ void    Zombie::announce()
 
 Zombie::Zombie(std::string str) : _name(str)
 {
-    
+
 }
 
 Zombie::~Zombie()
 {
-    std::cout << _name << " is destroyed!" << std::endl;
+    std::cout << _name << "is destroyed!";
 }

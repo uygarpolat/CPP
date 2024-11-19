@@ -12,8 +12,8 @@
 
 #include "Zombie.hpp"
 
-int		main( void ) {
-
+int		main( void )
+{
     Zombie zombie("originalZombie");
     Zombie *heapZombie;
 
