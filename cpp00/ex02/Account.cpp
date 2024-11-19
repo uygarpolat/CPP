@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 22:55:49 by upolat            #+#    #+#             */
-/*   Updated: 2024/09/25 10:20:30 by upolat           ###   ########.fr       */
+/*   Updated: 2024/11/19 20:47:43 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void Account::_displayTimestamp(void)
     std::time_t currentTime = std::chrono::system_clock::to_time_t(now);
     std::tm *localTime = std::localtime(&currentTime);
 	std::cout << "[" << std::put_time(localTime, "%Y%m%d_%H%M%S") << "] ";
+	//(void)localTime;
     //std::cout << "[19920104_091532] ";
 }
 

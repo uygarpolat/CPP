@@ -10,11 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <iomanip>
-#include <string>
-#include <sstream>
-#include <limits>
+#ifndef __ACCOUNT_H__
+# define __ACCOUNT_H__
+
+# include <iostream>
+# include <iomanip>
+# include <string>
+# include <sstream>
+# include <limits>
+
+void	ft_cout(std::string input, int i);
 
 class Contact {
 	private:
@@ -54,4 +59,4 @@ class PhoneBook {
 		void	ft_search(class PhoneBook *phonebook);
 };
 
-void	ft_cout(std::string input, int i);
+#endif
