@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __ACCOUNT_H__
-# define __ACCOUNT_H__
+#ifndef __MY_AWESOME_PHONEBOOK_HPP__
+# define __MY_AWESOME_PHONEBOOK_HPP__
 
 # include <iostream>
 # include <iomanip>
