@@ -17,10 +17,10 @@
 
 class Zombie {
     public:
-        void announce( void );
-
-        Zombie(std::string);
+        void announce ( void );
+        Zombie();
         ~Zombie();
+        void setName (std::string);
     private:
         std::string _name;
 };

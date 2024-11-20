@@ -14,5 +14,14 @@
 
 int	main ( void )
 {
+    int hordeSize = 7;
+    std::string zombieName = "zOmBiE-";
+    
+    Zombie *myHordes = zombieHorde(hordeSize, zombieName);
+
+    for (int i = 0; i < hordeSize; i++)
+        myHordes[i].announce();
+    delete[] myHordes;
+
     return 0;
 }
