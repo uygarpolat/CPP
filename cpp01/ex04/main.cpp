@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 19:44:14 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/21 00:12:03 by upolat           ###   ########.fr       */
+/*   Updated: 2024/11/21 14:25:30 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 #include <sstream>
 #include <string>
 
-    std::string replace_content(std::string &content, std::string argv2, std::string argv3)
+    std::string replace_content(const std::string &content,
+        const std::string &argv2, const std::string &argv3)
     {
         std::string revised_content;
         std::size_t start = 0;
@@ -59,8 +60,7 @@ int main(int argc, char **argv) {
     
     std::ostringstream buffer;
     buffer << in.rdbuf();
-    std::string file_content = buffer.str();
-    std::string replaced_content = replace_content(file_content, argv[2], argv[3]);
+    std::string replaced_content = replace_content(buffer.str(), argv[2], argv[3]);
     out << replaced_content;
     
     return 0;
