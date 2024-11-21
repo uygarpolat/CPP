@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:29:41 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/21 18:55:46 by upolat           ###   ########.fr       */
+/*   Updated: 2024/11/22 01:47:59 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,12 @@ class Fixed {
         Fixed(const Fixed &other);
         Fixed &operator=(const Fixed &other);
         ~Fixed();
+        Fixed(const int intValue);
+        Fixed(const float floatValue);
         int getRawBits( void ) const;
         void setRawBits( int const raw );
+        float toFloat( void ) const;
+        int toInt( void ) const;
     private:
         int _value;
         static const int _fraction;
