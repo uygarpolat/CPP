@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:29:41 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/22 15:26:32 by upolat           ###   ########.fr       */
+/*   Updated: 2024/11/22 19:50:47 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,21 @@ class Fixed {
         bool operator<=(const Fixed &other) const;
         bool operator>=(const Fixed &other) const;
 
+        Fixed operator+(const Fixed &other) const;
+        Fixed operator-(const Fixed &other) const;
+        Fixed operator*(const Fixed &other) const;
+        Fixed operator/(const Fixed &other) const;
+
+        Fixed &operator++();
+        Fixed &operator--();
+        Fixed operator++(int);
+        Fixed operator--(int);
+
+        static Fixed &min(Fixed &a, Fixed &b);
+        static Fixed &max(Fixed &a, Fixed &b);
+        static const Fixed &min(const Fixed &a, const Fixed &b);
+        static const Fixed &max(const Fixed &a, const Fixed &b);
+    
     private:
         int _value;
         static const int _fraction;

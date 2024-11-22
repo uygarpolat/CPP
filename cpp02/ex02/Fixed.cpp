@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:29:38 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/22 15:26:03 by upolat           ###   ########.fr       */
+/*   Updated: 2024/11/22 20:19:07 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,47 +15,37 @@
 
 const int Fixed::_fraction = 8;
 
-Fixed::Fixed() : _value(0) {
-    std::cout << "Default constructor called" << std::endl;
-}
+Fixed::Fixed() : _value(0) {}
 
 Fixed::Fixed(const Fixed &other)
 {
-    std::cout << "Copy constructor called" << std::endl;
     setRawBits(other.getRawBits());
 }
 
 Fixed &Fixed::operator=(const Fixed &other) {
-    std::cout << "Copy assignment operator called" << std::endl;
     if (this != &other)
         setRawBits(other.getRawBits());
     return *this;
 }
 
-Fixed::~Fixed() {
-    std::cout << "Destructor called" << std::endl;
-}
+Fixed::~Fixed() {}
 
 Fixed::Fixed(const float floatValue) {
-    std::cout << "Float constructor called" << std::endl;
     if (floatValue > (INT_MAX >> _fraction) || floatValue < (INT_MIN >> _fraction))
         throw std::overflow_error("Floating-point value too large for fixed-point format");
     setRawBits(std::round(floatValue * (1 << _fraction)));
 }
 
 Fixed::Fixed(const int intValue) {
-    std::cout << "Int constructor called" << std::endl;
     if (intValue > (INT_MAX >> _fraction) || intValue < (INT_MIN >> _fraction))
         throw std::overflow_error("Integer value too large for fixed-point format");
     setRawBits(intValue << _fraction);
 }
 
 int Fixed::getRawBits( void ) const {
-    //std::cout << "getRawBits member function called" << std::endl;
     return _value;
 }
 void Fixed::setRawBits( int const raw ) {
-    //std::cout << "setRawBits member function called" << std::endl;
     _value = raw;
 }
 
@@ -86,4 +76,79 @@ bool Fixed::operator<=(const Fixed &other) const {
 
 bool Fixed::operator>=(const Fixed &other) const {
     return this->getRawBits() >= other.getRawBits();
+}
+
+Fixed Fixed::operator+(const Fixed &other) const {
+    Fixed result;
+    result.setRawBits(this->getRawBits() + other.getRawBits());
+    return result;
+}
+
+Fixed Fixed::operator-(const Fixed &other) const {
+    Fixed result;
+    result.setRawBits(this->getRawBits() - other.getRawBits());
+    return result;
+}
+
+Fixed Fixed::operator*(const Fixed &other) const {
+    Fixed result;
+    result.setRawBits((this->getRawBits() * other.getRawBits()) >> _fraction);
+    return result;
+}
+
+Fixed Fixed::operator/(const Fixed &other) const {
+    if (other.getRawBits() == 0)
+        throw std::runtime_error("Division by zero");
+    Fixed result;
+    result.setRawBits((this->getRawBits() << _fraction) / other.getRawBits());
+    return result;
+}
+
+Fixed &Fixed::operator++() {
+    this->_value += 1;
+    return *this;
+}
+
+Fixed &Fixed::operator--() {
+    this->_value -= 1;
+    return *this;
+}
+
+Fixed Fixed::operator++(int) {
+    Fixed temp = *this;
+    this->_value += 1;
+    return temp;
+}
+Fixed Fixed::operator--(int) {
+    Fixed temp = *this;
+    this->_value -= 1;
+    return temp;
+}
+
+Fixed &Fixed::min(Fixed &a, Fixed &b)
+{
+    if (a < b)
+        return a;
+    return b;
+}
+
+Fixed &Fixed::max(Fixed &a, Fixed &b)
+{
+    if (a > b)
+        return a;
+    return b;
+}
+
+const Fixed &Fixed::min(const Fixed &a, const Fixed &b)
+{
+    if (a < b)
+        return a;
+    return b;
+}
+
+const Fixed &Fixed::max(const Fixed &a, const Fixed &b)
+{
+    if (a > b)
+        return a;
+    return b;
 }
