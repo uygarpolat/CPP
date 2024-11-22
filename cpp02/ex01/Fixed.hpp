@@ -6,12 +6,14 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:29:41 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/22 01:47:59 by upolat           ###   ########.fr       */
+/*   Updated: 2024/11/22 13:09:20 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FIXED_HPP
 # define FIXED_HPP
+
+# include <iostream>
 
 class Fixed {
     public:
@@ -29,5 +31,7 @@ class Fixed {
         int _value;
         static const int _fraction;
 };
+
+std::ostream &operator<<(std::ostream &out, const Fixed &fixed);
 
 #endif

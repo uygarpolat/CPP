@@ -6,12 +6,11 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:29:38 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/22 01:55:56 by upolat           ###   ########.fr       */
+/*   Updated: 2024/11/22 14:35:46 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
-#include <iostream>
 #include <cmath>
 
 const int Fixed::_fraction = 8;
@@ -23,14 +22,13 @@ Fixed::Fixed() : _value(0) {
 Fixed::Fixed(const Fixed &other)
 {
     std::cout << "Copy constructor called" << std::endl;
-    _value = other.getRawBits();
+    setRawBits(other.getRawBits());
 }
 
 Fixed &Fixed::operator=(const Fixed &other) {
     std::cout << "Copy assignment operator called" << std::endl;
-    if (this != &other) {
-        _value = other.getRawBits();
-    }
+    if (this != &other)
+        setRawBits(other.getRawBits());
     return *this;
 }
 
@@ -39,29 +37,37 @@ Fixed::~Fixed() {
 }
 
 Fixed::Fixed(const float floatValue) {
-    _value = std::round(floatValue * std::pow(2, _fraction));
+    std::cout << "Float constructor called" << std::endl;
+    if (floatValue > (INT_MAX >> _fraction) || floatValue < (INT_MIN >> _fraction))
+        throw std::overflow_error("Floating-point value too large for fixed-point format");
+    setRawBits(std::round(floatValue * (1 << _fraction)));
 }
 
 Fixed::Fixed(const int intValue) {
-    //_value = intValue * std::pow(2, _fraction);
-    _value = _fraction << intValue;
+    std::cout << "Int constructor called" << std::endl;
+    if (intValue > (INT_MAX >> _fraction) || intValue < (INT_MIN >> _fraction))
+        throw std::overflow_error("Integer value too large for fixed-point format");
+    setRawBits(intValue << _fraction);
 }
 
 int Fixed::getRawBits( void ) const {
-    std::cout << "getRawBits member function called" << std::endl;
+    //std::cout << "getRawBits member function called" << std::endl;
     return _value;
 }
 void Fixed::setRawBits( int const raw ) {
-    std::cout << "setRawBits member function called" << std::endl;
+    //std::cout << "setRawBits member function called" << std::endl;
     _value = raw;
 }
 
 float Fixed::toFloat( void ) const {
-    return (getRawBits() / std::pow(2, _fraction));
-    //return (getRawBits() >> _fraction);
+    return static_cast<float>(getRawBits()) / (1 << _fraction);
 }
 
 int Fixed::toInt( void ) const {
-    //return (std::round(getRawBits() / std::pow(2, _fraction)));
-    return (getRawBits() >> _fraction);
+    return (getRawBits() + (1 << (_fraction - 1))) >> _fraction;
+}
+
+std::ostream &operator<<(std::ostream &out, const Fixed &fixed) {
+    out << fixed.toFloat();
+    return out;
 }
