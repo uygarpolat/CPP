@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:29:41 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/22 19:50:47 by upolat           ###   ########.fr       */
+/*   Updated: 2024/11/23 19:20:51 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,22 @@ class Fixed {
         float toFloat( void ) const;
         int toInt( void ) const;
         
-        bool operator<(const Fixed &other) const;
-        bool operator>(const Fixed &other) const;
-        bool operator<=(const Fixed &other) const;
-        bool operator>=(const Fixed &other) const;
+        bool operator <  (const Fixed &other) const;
+        bool operator >  (const Fixed &other) const;
+        bool operator <= (const Fixed &other) const;
+        bool operator >= (const Fixed &other) const;
+        bool operator == (const Fixed &other) const;
+        bool operator != (const Fixed &other) const;
 
-        Fixed operator+(const Fixed &other) const;
-        Fixed operator-(const Fixed &other) const;
-        Fixed operator*(const Fixed &other) const;
-        Fixed operator/(const Fixed &other) const;
+        Fixed operator + (const Fixed &other) const;
+        Fixed operator - (const Fixed &other) const;
+        Fixed operator * (const Fixed &other) const;
+        Fixed operator / (const Fixed &other) const;
 
-        Fixed &operator++();
-        Fixed &operator--();
-        Fixed operator++(int);
-        Fixed operator--(int);
+        Fixed &operator ++ ();
+        Fixed &operator -- ();
+        Fixed operator ++ (int);
+        Fixed operator -- (int);
 
         static Fixed &min(Fixed &a, Fixed &b);
         static Fixed &max(Fixed &a, Fixed &b);
