@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 20:35:44 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/22 22:33:32 by upolat           ###   ########.fr       */
+/*   Updated: 2024/11/23 14:04:22 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ class Point {
     public:
         Point();
         Point(const Point &other);
-        Point &operator=(const Point &other);
+        Point &operator=(const Point &other) = delete;
         ~Point();
         Fixed getFixed_x( void ) const;
         Fixed getFixed_y( void ) const;
