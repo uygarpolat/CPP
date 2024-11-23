@@ -6,13 +6,13 @@
 #    By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/23 00:31:20 by upolat            #+#    #+#              #
-#    Updated: 2024/11/23 23:37:08 by upolat           ###   ########.fr        #
+#    Updated: 2024/11/24 01:39:59 by upolat           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = DiamondTrap
 CXX = g++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++23
+CXXFLAGS = -Wall -Wextra -Werror -Wshadow -std=c++23
 
 SOURCES = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
 
