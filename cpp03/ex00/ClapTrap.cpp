@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 01:15:57 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/23 16:51:14 by upolat           ###   ########.fr       */
+/*   Updated: 2024/11/23 16:53:25 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &other) {
 }
 
 ClapTrap::~ClapTrap() {
-    std::cout << "Destructor is called for " << _name << std::endl;
+    std::cout << "Destructor is called for ClapTrap " << _name << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name)
