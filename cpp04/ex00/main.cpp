@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 11:38:10 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/24 15:28:20 by upolat           ###   ########.fr       */
+/*   Updated: 2024/11/24 16:51:25 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,11 @@ int main(void) {
     std::cout << j->getType() << " " << std::endl;
     std::cout << i->getType() << " " << std::endl;
     i->makeSound(); //will output the cat sound!
+    std::cout << "The line above should read: Cat says MEOW" << std::endl;
     j->makeSound();
+    std::cout << "The line above should read: Dog says BARK" << std::endl;
     meta->makeSound();
+    std::cout << "The line above should read: Animal makes random animal noises" << std::endl;
 
     delete meta;
     delete j;
@@ -35,7 +38,9 @@ int main(void) {
 
     std::cout << wrongCat->getType() << " " << std::endl;
     wrongAnimal->makeSound(); // Will output the animal sound, which is correct.
+    std::cout << "The line above should read: WrongAnimal makes random animal noises" << std::endl;
     wrongCat->makeSound(); // Will output the animal sound, which is incorrect.
+    std::cout << "The line above should read: WrongCat makes random animal noises" << std::endl;
 
     delete wrongAnimal;
     delete wrongCat;

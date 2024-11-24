@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 11:36:00 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/24 15:20:03 by upolat           ###   ########.fr       */
+/*   Updated: 2024/11/24 16:04:53 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ Animal &Animal::operator=(const Animal &other) {
 }
 
 Animal::~Animal() {
-    std::cout << "Destructor called for " << getType() << std::endl;
+    std::cout << "Destructor called for Animal" << std::endl;
 }
 
 const std::string &Animal::getType(void) const {

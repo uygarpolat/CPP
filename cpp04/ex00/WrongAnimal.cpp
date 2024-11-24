@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 14:20:44 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/24 15:20:14 by upolat           ###   ########.fr       */
+/*   Updated: 2024/11/24 16:05:41 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ WrongAnimal &WrongAnimal::operator=(const WrongAnimal &other) {
 }
 
 WrongAnimal::~WrongAnimal() {
-    std::cout << "Destructor called for " << getType() << std::endl;
+    std::cout << "Destructor called for WrongAnimal" << std::endl;
 }
 
 const std::string &WrongAnimal::getType(void) const {

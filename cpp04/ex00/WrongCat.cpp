@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 14:20:28 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/24 15:23:16 by upolat           ###   ########.fr       */
+/*   Updated: 2024/11/24 16:05:51 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ WrongCat &WrongCat::operator=(const WrongCat &other) {
 }
 
 WrongCat::~WrongCat() {
-    std::cout << "Destructor called for " << getType() << std::endl;
+    std::cout << "Destructor called for WrongCat" << std::endl;
 }
 
 void WrongCat::makeSound(void) const {

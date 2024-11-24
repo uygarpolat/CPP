@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 11:37:18 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/24 15:24:15 by upolat           ###   ########.fr       */
+/*   Updated: 2024/11/24 16:05:27 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ Dog &Dog::operator=(const Dog &other) {
 }
 
 Dog::~Dog() {
-    std::cout << "Destructor called for " << getType() << std::endl;
+    std::cout << "Destructor called for Dog" << std::endl;
 }
 
 void Dog::makeSound(void) const {
