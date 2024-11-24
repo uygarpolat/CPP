@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 11:37:01 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/24 15:10:23 by upolat           ###   ########.fr       */
+/*   Updated: 2024/11/24 17:59:27 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,5 @@ class Dog : public Animal {
         Dog(const Dog &other);
         Dog &operator=(const Dog &other);
         ~Dog();
-        void makeSound() const;
+        void makeSound() const override;
 };
