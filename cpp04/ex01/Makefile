@@ -6,15 +6,15 @@
 #    By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/24 01:30:50 by upolat            #+#    #+#              #
-#    Updated: 2024/11/24 18:34:46 by upolat           ###   ########.fr        #
+#    Updated: 2024/11/25 17:55:05 by upolat           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Animal
+NAME = Brain
 CXX = g++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++23
 
-SOURCES = main.cpp Animal.cpp Cat.cpp Dog.cpp WrongCat.cpp WrongAnimal.cpp Brain.cpp
+SOURCES = main.cpp Animal.cpp Cat.cpp Dog.cpp WrongCat.cpp WrongAnimal.cpp Brain.cpp WrongBrain.cpp
 
 OBJECTS = $(SOURCES:.cpp=.o)
 

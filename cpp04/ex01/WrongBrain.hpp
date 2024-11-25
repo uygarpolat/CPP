@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   WrongBrain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/24 11:36:30 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/25 15:26:20 by upolat           ###   ########.fr       */
+/*   Created: 2024/11/24 18:18:04 by upolat            #+#    #+#             */
+/*   Updated: 2024/11/25 15:24:51 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include "Animal.hpp"
-#include "Brain.hpp"
+#include <string>
 
-class Cat : public Animal {
+class WrongBrain {
     public:
-        Cat();
-        Cat(const Cat &other);
-        Cat &operator=(const Cat &other);
-        ~Cat();
-        void makeSound() const override;
+        WrongBrain();
+        WrongBrain(const WrongBrain &other);
+        WrongBrain &operator=(const WrongBrain &other);
+        ~WrongBrain();
+
+        void setIdea(std::string const &ideaString);
         void getIdea(const unsigned int ideaNumber) const;
         void getIdeas() const;
-        void setIdea(std::string idea);
-    private:
-        Brain *_brain;
-        
+    protected:
+        std::string ideas[100];
+        unsigned int _ideaCounter;
 };

@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 18:18:04 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/24 21:33:46 by upolat           ###   ########.fr       */
+/*   Updated: 2024/11/25 15:24:51 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@ class Brain {
         Brain &operator=(const Brain &other);
         ~Brain();
 
-        void setIdeas(std::string &ideaString);
-        std::string getIdeas(const int ideaNumber);
+        void setIdea(std::string const &ideaString);
+        void getIdea(const unsigned int ideaNumber) const;
+        void getIdeas() const;
     protected:
         std::string ideas[100];
         unsigned int _ideaCounter;
