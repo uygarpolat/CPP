@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 11:38:10 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/25 17:59:39 by upolat           ###   ########.fr       */
+/*   Updated: 2024/11/25 18:43:34 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ int main()
     delete dog4;
 
 
-    //Now let's contast that with WrongCat class, who purposefully uses a shallow copy and "has a" WrongBrain
+    //Now let's contrast that with WrongCat class, who purposefully uses a shallow copy and "has a" WrongBrain
     std::cout << "++++++++++ Starting shallow copy demonstration with two wrongCat objects with wrongBrain +++++++++++" << std::endl;
 
     WrongCat *wrongCat1 = new WrongCat();
