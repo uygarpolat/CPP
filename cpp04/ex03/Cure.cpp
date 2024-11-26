@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 21:12:15 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/26 01:10:42 by upolat           ###   ########.fr       */
+/*   Updated: 2024/11/26 18:25:34 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 #include <iostream>
 
 Cure::Cure() : AMateria("cure") {}
-/*
-Cure::Cure(const Cure &other) : data(other.data) {}
+
+Cure::Cure(const Cure &other) : AMateria(other) {}
 
 Cure &Cure::operator=(const Cure &other) {
     if (this != &other) {
-        data = other.data;
+        // AMateria is immutable, so no need to copy _type
     }
     return *this;
 }
-*/
+
 Cure::~Cure() {}
 
 AMateria* Cure::clone() const {

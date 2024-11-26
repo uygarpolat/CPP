@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 00:07:05 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/26 01:19:22 by upolat           ###   ########.fr       */
+/*   Updated: 2024/11/26 19:15:27 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 class MateriaSource : public IMateriaSource {
     public:
         MateriaSource();
-        //MateriaSource(const MateriaSource &other);
-        //MateriaSource &operator=(const MateriaSource &other);
+        MateriaSource(const MateriaSource &other);
+        MateriaSource &operator=(const MateriaSource &other);
         ~MateriaSource();
         void learnMateria(AMateria *m) override;
         AMateria* createMateria(std::string const & type) override;

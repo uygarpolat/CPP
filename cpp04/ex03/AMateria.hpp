@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 20:45:07 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/26 01:08:39 by upolat           ###   ########.fr       */
+/*   Updated: 2024/11/26 18:21:51 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,12 @@
 class AMateria {
     public:
         AMateria();
-        //AMateria(const AMateria &other);
-        //AMateria &operator=(const AMateria &other);
+        AMateria(const AMateria &other);
+        AMateria &operator=(const AMateria &other);
         virtual ~AMateria();
 
-        AMateria(const std::string  &type); // Parametrized constructor
-        //...
-        std::string const & getType() const; //Returns the materia type
+        AMateria(const std::string  &type);
+        std::string const & getType() const;
         virtual AMateria* clone() const = 0;
         virtual void use(ICharacter& target);
     protected:
