@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 00:03:20 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/26 01:17:31 by upolat           ###   ########.fr       */
+/*   Updated: 2024/11/26 19:35:48 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 class IMateriaSource {
     public:
-        virtual ~IMateriaSource();
+        virtual ~IMateriaSource() {};
         virtual void learnMateria(AMateria*) = 0;
         virtual AMateria* createMateria(std::string const & type) = 0;
 };
