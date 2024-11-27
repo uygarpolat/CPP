@@ -14,6 +14,7 @@
 
 #include <string>
 #include <exception>
+#include <iostream>
 
 class Bureaucrat {
     public:
@@ -21,9 +22,11 @@ class Bureaucrat {
         Bureaucrat(const Bureaucrat &other);
         Bureaucrat &operator=(const Bureaucrat &other);
         ~Bureaucrat();
+        Bureaucrat(unsigned int grade, const std::string &name);
+        Bureaucrat &operator << (const Bureaucrat &other);
 
-        Bureaucrat &operator ++ ();
-        Bureaucrat &operator -- ();
+        void decrementGrade(void);
+        void incrementGrade(void);
 
         class GradeTooHighException : public std::exception {
 			public:
@@ -36,9 +39,11 @@ class Bureaucrat {
 		};
 
         unsigned int getGrade(void) const;
-        std::string getName(void) const;
+        std::string const &getName(void) const;
 
     private:
         std::string const _name;
         unsigned int _grade;
 };
+
+std::ostream &operator<<(std::ostream &out, const Bureaucrat &bureaucrat);
