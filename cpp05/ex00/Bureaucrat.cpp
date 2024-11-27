@@ -15,9 +15,9 @@
 Bureaucrat::Bureaucrat(unsigned int grade) {
     try {
         if (grade < 1)
-            throw (GradeTooHighException())
+            throw GradeTooHighException();
         else if (grade > 150)
-            throw (GradeTooLowException())
+            throw GradeTooLowException();
         _grade = grade;
     }
     catch (const std::exception & e) {
