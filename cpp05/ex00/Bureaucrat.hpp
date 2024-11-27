@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 09:56:51 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/27 10:34:36 by upolat           ###   ########.fr       */
+/*   Updated: 2024/11/27 17:19:57 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,8 @@ class Bureaucrat {
         Bureaucrat(const Bureaucrat &other);
         Bureaucrat &operator=(const Bureaucrat &other);
         ~Bureaucrat();
-        Bureaucrat(unsigned int grade, const std::string &name);
-        Bureaucrat &operator << (const Bureaucrat &other);
-
+        Bureaucrat(int grade, const std::string &name);
+        
         void decrementGrade(void);
         void incrementGrade(void);
 
@@ -38,12 +37,12 @@ class Bureaucrat {
 				const char* what() const throw();
 		};
 
-        unsigned int getGrade(void) const;
+        int getGrade(void) const;
         std::string const &getName(void) const;
 
     private:
         std::string const _name;
-        unsigned int _grade;
+        int _grade;
 };
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &bureaucrat);

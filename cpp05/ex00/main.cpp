@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 09:57:51 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/27 16:57:12 by upolat           ###   ########.fr       */
+/*   Updated: 2024/11/27 17:24:03 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,15 @@ int main(void) {
         Bureaucrat b1;
         Bureaucrat b2(99, "Hannibal Lecter");
         std::cout << b2 << std::endl;
-        std::cout << b2.getName() << std::endl;
-        std::cout << b2.getGrade() << std::endl;
-        b2.incrementGrade();
-        b2.incrementGrade();
-        b2.decrementGrade();
+        std::cout << "Name retrieved manually: " << b2.getName() << std::endl;
+        std::cout << "Grade retrieved manually: " << b2.getGrade() << std::endl;
+        b2.incrementGrade(); // Grade increased to 98
+        b2.incrementGrade(); // Grade increased to 97
+        b2.incrementGrade(); // Grade increased to 96
+        b2.incrementGrade(); // Grade increased to 95
+        b2.incrementGrade(); // Grade increased to 94
+        b2.incrementGrade(); // Grade increased to 93
+        b2.decrementGrade(); // Grade decreased to 94
         std::cout << b2 << std::endl;
     }
     catch (std::exception &e) {
@@ -77,6 +81,7 @@ int main(void) {
     catch (std::exception &e) {
         std::cout << e.what();
     }
+    
     // Testing copy constructor, the two prints should be identical.
     std::cout << "***** TEST 7 *****"  << std::endl;
     try {
@@ -88,6 +93,7 @@ int main(void) {
     catch (std::exception &e) {
         std::cout << e.what();
     }
+    
     // Copy assignment operator overload test
     std::cout << "***** TEST 8 *****"  << std::endl;
     try {
@@ -96,7 +102,7 @@ int main(void) {
         std::cout << *b9 << std::endl;
         std::cout << *b10 << std::endl;
         *b10 = *b9;
-        // The following will change the grade of *b10 but not its name, because name is const.
+        // The following will change the grade of *b10 to 14 but not its name, because name is const.
         std::cout << *b10 << std::endl;
         delete b9;
         delete b10;
@@ -105,5 +111,13 @@ int main(void) {
         std::cout << e.what();
     }
 
+    // Creating a bureaucrat with negative grade, should throw "Grade too high" exception
+    std::cout << "***** TEST 9 *****" << std::endl;
+    try {
+        Bureaucrat b11(-1, "Negatory Nelly");
+    }
+    catch (std::exception &e) {
+        std::cout << e.what();
+    }
     return 0;
 }

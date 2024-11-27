@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 09:56:17 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/27 10:34:07 by upolat           ###   ########.fr       */
+/*   Updated: 2024/11/27 17:20:33 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ Bureaucrat::Bureaucrat()
     std::cout << "Unnamed bureaucrat created with lowest grade: 150." << std::endl;
 }
 
-Bureaucrat::Bureaucrat(unsigned int grade, const std::string &name)
+Bureaucrat::Bureaucrat(int grade, const std::string &name)
     : _name(name), _grade(grade) {
         if (grade < 1)
             throw GradeTooHighException();
@@ -46,7 +46,7 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other) {
 
 Bureaucrat::~Bureaucrat() {}
 
-unsigned int Bureaucrat::getGrade(void) const {
+int Bureaucrat::getGrade(void) const {
     return _grade;
 }
 
@@ -71,10 +71,8 @@ void Bureaucrat::decrementGrade(void) {
 }
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &bureaucrat) {
-    out << bureaucrat.getName();
-    out << ", bureaucrat grade ";
-    out << bureaucrat.getGrade();
-    out << ".";
-    // out << bureaucrat.getName() + " adsasdas";
+
+    out << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << ".";
+
     return out;
 }
