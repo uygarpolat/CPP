@@ -13,18 +13,19 @@
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
-AForm::AForm() : _name("Unknown Form"), _signed(false), _executeGrade(150), _signGrade(150) {}
+AForm::AForm() : _name("Unknown Form"), _signed(false), _signGrade(150), _executeGrade(150) {}
 
-AForm::AForm(const std::string &name, int executeGrade, int signGrade)
-    : _name(name), _signed(false), _executeGrade(executeGrade), _signGrade(signGrade) {
-                if (_signGrade < 1 || _executeGrade < 1)
+AForm::AForm(const std::string &name, int signGrade, int executeGrade)
+    : _name(name), _signGrade(signGrade), _executeGrade(executeGrade) {
+        _signed = false;
+        if (_signGrade < 1 || _executeGrade < 1)
             throw GradeTooHighException();
         else if (_signGrade > 150 || _executeGrade > 150)
             throw GradeTooLowException();
 }
 
 AForm::AForm(const AForm &other)
-     : _name(other._name), _signed(other._signed), _executeGrade(other._executeGrade), _signGrade(other._signGrade) {}
+     : _name(other._name), _signed(other._signed), _signGrade(other._signGrade), _executeGrade(other._executeGrade) {}
 
 AForm &AForm::operator=(const AForm &other) {
     if (this != &other) {
@@ -67,16 +68,21 @@ void AForm::beSigned(Bureaucrat &bureaucrat) {
 }
 
 std::ostream &operator<<(std::ostream &out, const AForm &form) {
-    out << "Form "
-        << form.getName()
-        << " has an execution grade of "
-        << form.getExecuteGrade()
-        << " and sign grade of "
+    out << form.getName()
+        << " has a sign grade of "
         << form.getSignGrade()
+        << ", execution grade of "
+        << form.getExecuteGrade()
+        << ", its target is "
+        << form.getTarget()
         << ", and it is currently";
     if (!form.getSign())
         out << " NOT";
     out << " signed."; 
 
     return out;
+}
+
+void AForm::setSign(bool boolSign) {
+    _signed = boolSign;
 }
