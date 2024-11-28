@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 19:28:26 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/28 20:20:46 by upolat           ###   ########.fr       */
+/*   Updated: 2024/11/28 21:18:52 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,6 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &o
 }
 
 RobotomyRequestForm::~RobotomyRequestForm() {}
-
-void RobotomyRequestForm::beSigned(Bureaucrat &bureaucrat) {
-    if (getSign())
-		throw FormAlreadySignedException();
-    if (getSignGrade() < bureaucrat.getGrade())
-            throw GradeTooLowException();
-    setSign(true);
-}
 
 const std::string RobotomyRequestForm::getTarget(void) const {
     return _target;

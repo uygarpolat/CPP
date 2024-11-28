@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 12:36:01 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/28 20:12:25 by upolat           ###   ########.fr       */
+/*   Updated: 2024/11/28 21:19:00 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,6 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {}
-
-void ShrubberyCreationForm::beSigned(Bureaucrat &bureaucrat) {
-    if (getSign())
-		throw FormAlreadySignedException();
-    if (getSignGrade() < bureaucrat.getGrade())
-            throw GradeTooLowException();
-    setSign(true);
-}
 
 const std::string ShrubberyCreationForm::getTarget(void) const {
     return _target;

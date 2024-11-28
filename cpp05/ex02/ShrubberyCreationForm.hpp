@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 12:36:04 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/28 18:49:34 by upolat           ###   ########.fr       */
+/*   Updated: 2024/11/28 21:19:04 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ class ShrubberyCreationForm : public AForm {
         ~ShrubberyCreationForm();
         ShrubberyCreationForm(const std::string &target);
 
-        void beSigned(Bureaucrat &bureaucrat) override;
         const std::string getTarget() const override;
         void execute(Bureaucrat const & executor) const override;
 

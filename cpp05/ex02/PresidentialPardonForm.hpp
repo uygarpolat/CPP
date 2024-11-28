@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 20:09:22 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/28 20:14:05 by upolat           ###   ########.fr       */
+/*   Updated: 2024/11/28 21:18:48 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ class PresidentialPardonForm : public AForm {
         ~PresidentialPardonForm();
         PresidentialPardonForm(const std::string &target);
 
-        void beSigned(Bureaucrat &bureaucrat) override;
         const std::string getTarget() const override;
         void execute(Bureaucrat const & executor) const override;
 

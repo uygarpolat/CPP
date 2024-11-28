@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 17:32:15 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/28 18:41:00 by upolat           ###   ########.fr       */
+/*   Updated: 2024/11/28 21:04:49 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ class AForm {
         void setSign(bool boolSign);
         int getSignGrade(void) const;
         int getExecuteGrade(void) const;
-        virtual void beSigned(Bureaucrat &bureaucrat);
+        void beSigned(Bureaucrat &bureaucrat);
         virtual const std::string getTarget() const = 0;
         virtual void execute(Bureaucrat const & executor) const = 0;
 

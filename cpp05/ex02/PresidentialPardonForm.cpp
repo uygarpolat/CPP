@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 20:09:04 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/28 20:16:47 by upolat           ###   ########.fr       */
+/*   Updated: 2024/11/28 21:18:42 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,6 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPard
 }
 
 PresidentialPardonForm::~PresidentialPardonForm() {}
-
-void PresidentialPardonForm::beSigned(Bureaucrat &bureaucrat) {
-    if (getSign())
-		throw FormAlreadySignedException();
-    if (getSignGrade() < bureaucrat.getGrade())
-            throw GradeTooLowException();
-    setSign(true);
-}
 
 const std::string PresidentialPardonForm::getTarget(void) const {
     return _target;
