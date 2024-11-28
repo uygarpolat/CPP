@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 09:56:51 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/28 12:22:14 by upolat           ###   ########.fr       */
+/*   Updated: 2024/11/28 18:05:36 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ class Bureaucrat {
         int getGrade(void) const;
         std::string const &getName(void) const;
         void signForm(AForm &form);
-
+        void executeForm(AForm const & form);
     private:
         std::string const _name;
         int _grade;

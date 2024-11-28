@@ -6,12 +6,14 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 09:57:51 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/28 16:42:36 by upolat           ###   ########.fr       */
+/*   Updated: 2024/11/28 20:18:57 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int main(void) {
 
@@ -46,5 +48,27 @@ int main(void) {
     catch (std::exception &e) {
         std::cout << e.what();
     }
+
+    AForm *shrub5 = new ShrubberyCreationForm("cabin");
+    Bureaucrat buro(40, "Gale");
+    buro.signForm(*shrub5);
+    buro.executeForm(*shrub5);
+
+    delete shrub5;
+
+    AForm *robo = new RobotomyRequestForm("robotomized");
+    Bureaucrat buro2(40, "Gale");
+    buro2.signForm(*robo);
+    buro2.executeForm(*robo);
+
+    delete robo;
+
+    AForm *bandit = new PresidentialPardonForm("bandit");
+    Bureaucrat buro3(3, "Marvin");
+    buro3.signForm(*bandit);
+    buro3.executeForm(*bandit);
+
+    delete bandit;
+    
     return 0;
 }

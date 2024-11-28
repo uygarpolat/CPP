@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 17:32:15 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/28 14:44:53 by upolat           ###   ########.fr       */
+/*   Updated: 2024/11/28 18:41:00 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,10 @@ class AForm {
 			public:
 				const char* what() const throw();
 		};
+        class SignatureIncompleteException : public std::exception {
+			public:
+				const char* what() const throw();
+		};
 
         std::string const &getName(void) const;
         bool getSign() const;
@@ -46,6 +50,7 @@ class AForm {
         int getExecuteGrade(void) const;
         virtual void beSigned(Bureaucrat &bureaucrat);
         virtual const std::string getTarget() const = 0;
+        virtual void execute(Bureaucrat const & executor) const = 0;
 
     private:
         const std::string   _name;

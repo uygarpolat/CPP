@@ -58,6 +58,9 @@ const char *AForm::GradeTooLowException::what() const throw() {
 const char *AForm::FormAlreadySignedException::what() const throw() {
     return "Form already signed!\n";
 }
+const char *AForm::SignatureIncompleteException::what() const throw() {
+    return "Form net yet signed!\n";
+}
 
 void AForm::beSigned(Bureaucrat &bureaucrat) {
     if (getSign())

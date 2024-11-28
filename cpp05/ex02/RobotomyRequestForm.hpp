@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/28 12:36:04 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/28 18:49:34 by upolat           ###   ########.fr       */
+/*   Created: 2024/11/28 19:28:29 by upolat            #+#    #+#             */
+/*   Updated: 2024/11/28 19:29:54 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,21 @@
 #include <string>
 #include <exception>
 #include <iostream>
-#include <fstream>
 #include "AForm.hpp"
 
 class Bureaucrat;
 
-class ShrubberyCreationForm : public AForm {
+class RobotomyRequestForm : public AForm {
     public:
-        ShrubberyCreationForm();
-        ShrubberyCreationForm(const ShrubberyCreationForm &other);
-        ShrubberyCreationForm &operator=(const ShrubberyCreationForm &other);
-        ~ShrubberyCreationForm();
-        ShrubberyCreationForm(const std::string &target);
+        RobotomyRequestForm();
+        RobotomyRequestForm(const RobotomyRequestForm &other);
+        RobotomyRequestForm &operator=(const RobotomyRequestForm &other);
+        ~RobotomyRequestForm();
+        RobotomyRequestForm(const std::string &target);
 
         void beSigned(Bureaucrat &bureaucrat) override;
         const std::string getTarget() const override;
         void execute(Bureaucrat const & executor) const override;
-
-        class OpenFileException : public std::exception {
-			public:
-				const char* what() const throw();
-		};
 
     private:
         std::string   _target;
