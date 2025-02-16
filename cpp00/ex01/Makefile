@@ -6,15 +6,15 @@
 #    By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/18 08:57:15 by upolat            #+#    #+#              #
-#    Updated: 2025/02/16 15:34:04 by upolat           ###   ########.fr        #
+#    Updated: 2025/02/16 16:55:20 by upolat           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = my_awesome_phonebook
+NAME = MyAwesomePhonebook
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++23
 
-SOURCES = main.cpp my_awesome_phonebook.cpp
+SOURCES = main.cpp MyAwesomePhonebook.cpp
 
 OBJECTS = $(SOURCES:.cpp=.o)
 

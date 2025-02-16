@@ -6,11 +6,11 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 13:44:34 by upolat            #+#    #+#             */
-/*   Updated: 2025/02/16 15:19:06 by upolat           ###   ########.fr       */
+/*   Updated: 2025/02/16 16:54:55 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "my_awesome_phonebook.hpp"
+#include "MyAwesomePhonebook.hpp"
 
 int	main(void)
 {

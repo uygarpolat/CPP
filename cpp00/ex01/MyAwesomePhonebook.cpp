@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   my_awesome_phonebook.cpp                           :+:      :+:    :+:   */
+/*   MyAwesomePhonebook.cpp                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 11:04:31 by upolat            #+#    #+#             */
-/*   Updated: 2025/02/16 15:18:52 by upolat           ###   ########.fr       */
+/*   Updated: 2025/02/16 16:54:18 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "my_awesome_phonebook.hpp"
+#include "MyAwesomePhonebook.hpp"
 
 PhoneBook::PhoneBook() : counter(0)
 {
