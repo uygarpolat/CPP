@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 13:44:34 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/18 09:08:40 by upolat           ###   ########.fr       */
+/*   Updated: 2025/02/16 15:19:06 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int	main(void)
 		if (!std::getline(std::cin, userInput) || std::cin.eof())
 			exit(0);
 		if (userInput.compare("ADD") == 0)
-			phonebook.ft_add(&phonebook);
+			phonebook.ft_add();
 		else if (userInput.compare("SEARCH") == 0)
-			phonebook.ft_search(&phonebook);
+			phonebook.ft_search();
 		else if (userInput.compare("EXIT") == 0)
 			return (0);
 		else

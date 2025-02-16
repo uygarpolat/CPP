@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 11:02:41 by upolat            #+#    #+#             */
-/*   Updated: 2024/09/09 16:04:23 by upolat           ###   ########.fr       */
+/*   Updated: 2025/02/16 15:19:19 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,19 @@ class Contact {
 		std::string _DarkestSecret;
 
 	public:
-		void setFirstName(std::string& FirstName);
+		void setFirstName(const std::string& FirstName);
 		std::string getFirstName() const;
 	
-		void setLastName(std::string& LastName);
+		void setLastName(const std::string& LastName);
 		std::string getLastName() const;
 
-		void setNickname(std::string& Nickname);
+		void setNickname(const std::string& Nickname);
 		std::string getNickname() const;
 
-		void setPhoneNumber(std::string& PhoneNumber);
+		void setPhoneNumber(const std::string& PhoneNumber);
 		std::string getPhoneNumber() const;
 
-		void setDarkestSecret(std::string& DarkestSecret);
+		void setDarkestSecret(const std::string& DarkestSecret);
 		std::string getDarkestSecret() const;
 };
 
@@ -55,8 +55,8 @@ class PhoneBook {
 		PhoneBook();
 		~PhoneBook();
 
-		void	ft_add(class PhoneBook *phonebook);
-		void	ft_search(class PhoneBook *phonebook);
+		void	ft_add(void);
+		void	ft_search(void);
 };
 
 #endif

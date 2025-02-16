@@ -6,12 +6,12 @@
 #    By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/16 16:07:53 by upolat            #+#    #+#              #
-#    Updated: 2024/11/18 08:53:49 by upolat           ###   ########.fr        #
+#    Updated: 2025/02/16 15:39:01 by upolat           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = megaphone
-CXX = g++
+CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++23
 
 SOURCES = megaphone.cpp
@@ -26,7 +26,12 @@ $(NAME): $(OBJECTS)
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-fclean:
-	rm -f $(OBJECTS) $(NAME)
+clean:
+	rm -f $(OBJECTS)
 
-.PHONY: all fclean
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re

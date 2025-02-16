@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 11:04:31 by upolat            #+#    #+#             */
-/*   Updated: 2024/09/09 16:22:00 by upolat           ###   ########.fr       */
+/*   Updated: 2025/02/16 15:18:52 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ PhoneBook::~PhoneBook()
 	std::cout << "PhoneBook destroyed." << std::endl;
 }
 
-void Contact::setFirstName(std::string& FirstName)
+void Contact::setFirstName(const std::string& FirstName)
 {
 		_FirstName = FirstName;
 }
@@ -31,7 +31,7 @@ std::string Contact::getFirstName() const
 	return (_FirstName);
 }
 
-void Contact::setLastName(std::string& LastName)
+void Contact::setLastName(const std::string& LastName)
 {
 		_LastName = LastName;
 }
@@ -40,7 +40,7 @@ std::string Contact::getLastName() const
 	return (_LastName);
 }
 
-void Contact::setNickname(std::string& Nickname)
+void Contact::setNickname(const std::string& Nickname)
 {
 	_Nickname = Nickname;
 }
@@ -49,7 +49,7 @@ std::string Contact::getNickname() const
 	return (_Nickname);
 }
 
-void Contact::setPhoneNumber(std::string& PhoneNumber)
+void Contact::setPhoneNumber(const std::string& PhoneNumber)
 {
 	_PhoneNumber = PhoneNumber;
 }
@@ -58,7 +58,7 @@ std::string Contact::getPhoneNumber() const
 	return (_PhoneNumber);
 }
 
-void Contact::setDarkestSecret(std::string& DarkestSecret)
+void Contact::setDarkestSecret(const std::string& DarkestSecret)
 {
 	_DarkestSecret = DarkestSecret;
 }
@@ -118,57 +118,49 @@ std::string getInput(const std::string& prompt)
 	return (inputField);
 }
 
-void	PhoneBook::ft_add(class PhoneBook *phonebook)
+void	PhoneBook::ft_add(void)
 {
-
-	// Makes sure to ignore newline characters from previous reads.
-	//std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-	//getInput("Enter first name: ", phonebook->contact[phonebook->counter % 8].setFirstName());
-	//getInput("Enter last name: ", phonebook->contact[phonebook->counter % 8].setLastName());
-	//getInput("Enter nickname: ", phonebook->contact[phonebook->counter % 8].setNickname());
-	//getInput("Enter phone number: ", phonebook->contact[phonebook->counter % 8].setPhoneNumber());
-	//getInput("Enter darkest secret: ", phonebook->contact[phonebook->counter % 8].setDarkestSecret());
-
 	std::string	input;
+	
 	input = getInput("Enter first name: ");
-	phonebook->contact[phonebook->counter % 8].setFirstName(input);
+	contact[counter % 8].setFirstName(input);
 
 	input = getInput("Enter last name: ");
-	phonebook->contact[phonebook->counter % 8].setLastName(input);
+	contact[counter % 8].setLastName(input);
 
 	input = getInput("Enter nickname: ");
-	phonebook->contact[phonebook->counter % 8].setNickname(input);
+	contact[counter % 8].setNickname(input);
 
 	input = getInput("Enter phone number: ");
-	phonebook->contact[phonebook->counter % 8].setPhoneNumber(input);
+	contact[counter % 8].setPhoneNumber(input);
 
 	input = getInput("Enter darkest secret: ");
-	phonebook->contact[phonebook->counter % 8].setDarkestSecret(input);
+	contact[counter % 8].setDarkestSecret(input);
 	
-	phonebook->counter++;
+	counter++;
 }
 
-void	PhoneBook::ft_search(class PhoneBook *phonebook)
+void	PhoneBook::ft_search()
 {
-	int	counter;
+	int	displayCounter;
 	int	i;
 
 	i = 0;
-	if (phonebook->counter > 7)
-		counter = 8;
+	if (counter > 7)
+		displayCounter = 8;
 	else
-		counter = phonebook->counter;
-	while (counter)
+		displayCounter = counter;
+	while (displayCounter)
 	{
 		std::cout << i << "|"
-					<< formatColumn(phonebook->contact[i].getFirstName(), 10) << "|"
-					<< formatColumn(phonebook->contact[i].getLastName(), 10) << "|"
-					<< formatColumn(phonebook->contact[i].getNickname(), 10) << "|"
+					<< formatColumn(contact[i].getFirstName(), 10) << "|"
+					<< formatColumn(contact[i].getLastName(), 10) << "|"
+					<< formatColumn(contact[i].getNickname(), 10) << "|"
 					<< std::endl;
 		i++;
-		counter--;
+		displayCounter--;
 	}
-	while (phonebook->counter)
+	while (counter)
 	{
 		ft_cout("Enter the index number for user's contact info: ", 0);
 		std::cin >> i;
@@ -181,19 +173,19 @@ void	PhoneBook::ft_search(class PhoneBook *phonebook)
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             ft_cout("Please enter a valid numeric index.", 1);
         } 
-		else if (i >= 0 && i < 8 && i < phonebook->counter)
+		else if (i >= 0 && i < 8 && i < counter)
 		{
 			ft_cout("----- CONTACT DETAILS -----", 1);
 			ft_cout("Name: ", 0);
-			ft_cout(phonebook->contact[i].getFirstName(), 1);
+			ft_cout(contact[i].getFirstName(), 1);
 			ft_cout("Last Name: ", 0);
-			ft_cout(phonebook->contact[i].getLastName(), 1);
+			ft_cout(contact[i].getLastName(), 1);
 			ft_cout("Nickname: ", 0);
-			ft_cout(phonebook->contact[i].getNickname(), 1);
+			ft_cout(contact[i].getNickname(), 1);
 			ft_cout("Phone number: ", 0);
-			ft_cout(phonebook->contact[i].getPhoneNumber(), 1);
+			ft_cout(contact[i].getPhoneNumber(), 1);
 			ft_cout("Darkest Secret: ", 0);
-			ft_cout(phonebook->contact[i].getDarkestSecret(), 1);
+			ft_cout(contact[i].getDarkestSecret(), 1);
 			ft_cout("----- CONTACT DETAILS -----", 1);
 			break ;
 		}
