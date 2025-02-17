@@ -6,13 +6,12 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:39:36 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/18 08:46:05 by upolat           ###   ########.fr       */
+/*   Updated: 2025/02/17 13:30:07 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
-#include <cctype>
 
 int main(int argc, char **argv)
 {
