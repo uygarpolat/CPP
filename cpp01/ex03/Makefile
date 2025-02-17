@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: upolat <upolat@student.42.fr>              +#+  +:+       +#+         #
+#    By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/20 14:05:24 by upolat            #+#    #+#              #
-#    Updated: 2024/11/20 19:37:23 by upolat           ###   ########.fr        #
+#    Updated: 2025/02/17 17:10:25 by upolat           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = Brain
-CXX = g++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++23
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++20
 
 SOURCES = main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
 
@@ -26,7 +26,12 @@ $(NAME): $(OBJECTS)
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-fclean:
-	rm -f $(OBJECTS) $(NAME)
+clean:
+	rm -f $(OBJECTS)
 
-.PHONY: all fclean
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re

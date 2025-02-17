@@ -6,13 +6,13 @@
 #    By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/20 01:22:01 by upolat            #+#    #+#              #
-#    Updated: 2024/11/20 01:22:04 by upolat           ###   ########.fr        #
+#    Updated: 2025/02/17 17:10:01 by upolat           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = Zombie
-CXX = g++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++23
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++20
 
 SOURCES = main.cpp Zombie.cpp zombieHorde.cpp
 
@@ -26,7 +26,12 @@ $(NAME): $(OBJECTS)
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-fclean:
-	rm -f $(OBJECTS) $(NAME)
+clean:
+	rm -f $(OBJECTS)
 
-.PHONY: all fclean
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re

@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: upolat <upolat@student.42.fr>              +#+  +:+       +#+         #
+#    By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/21 02:43:14 by upolat            #+#    #+#              #
-#    Updated: 2024/11/21 02:57:11 by upolat           ###   ########.fr        #
+#    Updated: 2025/02/17 17:11:14 by upolat           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = harlFilter
-CXX = g++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++23
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++20
 
 SOURCES = main.cpp Harl.cpp
 
