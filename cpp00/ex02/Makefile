@@ -6,12 +6,12 @@
 #    By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/19 19:12:52 by upolat            #+#    #+#              #
-#    Updated: 2025/02/16 15:39:10 by upolat           ###   ########.fr        #
+#    Updated: 2025/02/17 12:17:49 by upolat           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = Account
-CXX = g++
+CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++11 -Wno-deprecated-declarations
 
 SOURCES = tests.cpp Account.cpp
