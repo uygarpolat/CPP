@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: upolat <upolat@student.42.fr>              +#+  +:+       +#+        */
+/*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 12:53:00 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/20 14:42:52 by upolat           ###   ########.fr       */
+/*   Updated: 2025/02/17 21:35:47 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int main (void) {
     • The value pointed to by stringREF
     */
    std::cout << "The memory address of the string variable: " << &string << std::endl;
-   std::cout << "he memory address held by stringPTR: " << stringPTR << std::endl;
+   std::cout << "The memory address held by stringPTR: " << stringPTR << std::endl;
    std::cout << "The memory address held by stringREF: " << &stringREF << std::endl;
    std::cout << std::endl;
    std::cout << "The value of the string variable: " << string << std::endl;
