@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 19:44:14 by upolat            #+#    #+#             */
-/*   Updated: 2025/02/19 11:16:07 by upolat           ###   ########.fr       */
+/*   Updated: 2025/02/19 13:48:46 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@
 int main(int argc, char **argv) {
 
 
-    if (argc != 4) {
+    if (argc != 4 || std::string(argv[2]).empty()) {
         std::cerr << "Usage: " << argv[0] << " <input_filename> <to_be_replaced_string[NON-EMPTY]> <replacement_string>" << std::endl;
         return 1;
     }

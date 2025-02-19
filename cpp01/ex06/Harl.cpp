@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   harl.cpp                                           :+:      :+:    :+:   */
+/*   Harl.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: upolat <upolat@student.42.fr>              +#+  +:+       +#+        */
+/*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 02:43:06 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/21 12:59:13 by upolat           ###   ########.fr       */
+/*   Updated: 2025/02/19 14:09:33 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,16 @@ void	Harl::complain(std::string level)
 	switch(level_int) {
         case DEBUG:
             _debug();
+            [[fallthrough]];
         case INFO:
             _info();
+            [[fallthrough]];
         case WARNING:
             _warning();
+            [[fallthrough]];
         case ERROR:
             _error();
-            break ;
+            break;
         default:
             std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
     }
