@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: upolat <upolat@student.42.fr>              +#+  +:+       +#+        */
+/*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 19:44:14 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/21 14:25:30 by upolat           ###   ########.fr       */
+/*   Updated: 2025/02/19 11:16:07 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,10 @@
 
 
 int main(int argc, char **argv) {
+
+
     if (argc != 4) {
-        std::cerr << "Usage: " << argv[0] << " <input_filename> <to_be_replaced_string> <replacement_string>" << std::endl;
+        std::cerr << "Usage: " << argv[0] << " <input_filename> <to_be_replaced_string[NON-EMPTY]> <replacement_string>" << std::endl;
         return 1;
     }
 
