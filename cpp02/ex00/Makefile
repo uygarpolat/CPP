@@ -6,13 +6,13 @@
 #    By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/21 14:28:00 by upolat            #+#    #+#              #
-#    Updated: 2024/11/21 14:41:33 by upolat           ###   ########.fr        #
+#    Updated: 2025/02/19 16:51:21 by upolat           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = Fixed
-CXX = g++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++23
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++20
 
 SOURCES = main.cpp Fixed.cpp
 
@@ -26,7 +26,12 @@ $(NAME): $(OBJECTS)
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-fclean:
-	rm -f $(OBJECTS) $(NAME)
+clean:
+	rm -f $(OBJECTS)
 
-.PHONY: all fclean
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re
