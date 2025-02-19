@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:29:41 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/22 13:09:20 by upolat           ###   ########.fr       */
+/*   Updated: 2025/02/19 18:51:30 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ class Fixed {
         ~Fixed();
         Fixed(const int intValue);
         Fixed(const float floatValue);
+		
         int getRawBits( void ) const;
         void setRawBits( int const raw );
         float toFloat( void ) const;
