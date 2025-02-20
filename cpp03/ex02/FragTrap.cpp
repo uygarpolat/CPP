@@ -6,18 +6,18 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 22:19:02 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/23 23:27:25 by upolat           ###   ########.fr       */
+/*   Updated: 2025/02/20 09:41:35 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 #include <iostream>
 
-FragTrap::FragTrap() : ClapTrap("Unknown name", 100, 30, 30) {
+FragTrap::FragTrap() : ClapTrap("Unknown name", 100, 100, 30) {
     std::cout << "FragTrap default constructor called" << std::endl;
 }
 
-FragTrap::FragTrap(const std::string name) : ClapTrap(name, 100, 30, 30) {
+FragTrap::FragTrap(const std::string name) : ClapTrap(name, 100, 100, 30) {
     std::cout << "FragTrap parametrized constructor called" << std::endl;
 }
 
