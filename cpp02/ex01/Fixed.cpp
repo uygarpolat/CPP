@@ -6,12 +6,13 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:29:38 by upolat            #+#    #+#             */
-/*   Updated: 2025/02/19 20:11:37 by upolat           ###   ########.fr       */
+/*   Updated: 2025/02/20 11:21:48 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include <cmath>
+#include <climits>
 
 const int Fixed::_fraction = 8;
 
