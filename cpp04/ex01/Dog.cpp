@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 11:37:18 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/25 17:33:10 by upolat           ###   ########.fr       */
+/*   Updated: 2025/02/27 20:51:53 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ void Dog::makeSound(void) const {
     std::cout << getType() << " says BARK" << std::endl;
 }
 
-void Dog::getIdea(const unsigned int ideaNumnber) const {
-	_brain->getIdea(ideaNumnber);
+void Dog::getIdea(const unsigned int ideaNumber) const {
+	_brain->getIdea(ideaNumber);
 }
 
 void Dog::getIdeas(void) const {

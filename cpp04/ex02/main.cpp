@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 11:38:10 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/25 18:48:52 by upolat           ###   ########.fr       */
+/*   Updated: 2025/02/20 18:15:43 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ int main()
 
     /* The following would give a compile error, because Animal is an abstract class and
     cannot be instantiated. */
-    //Animal* animal2 = new Animal();
-    //animal2->makeSound();
-    //delete animal2;
+    // Animal* animal2 = new Animal();
+    // animal2->makeSound();
+    // delete animal2;
 
     // The following would also give a compile error due to same reason.
-    //Animal animal3;
-    //animal3.makeSound();
+    // Animal animal3;
+    // animal3.makeSound();
     
     return 0;
 }
