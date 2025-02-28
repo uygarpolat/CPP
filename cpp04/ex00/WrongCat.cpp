@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 14:20:28 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/24 16:05:51 by upolat           ###   ########.fr       */
+/*   Updated: 2025/02/28 12:52:23 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ WrongCat::WrongCat() {
     std::cout << "Default Constructor called for " << getType() << std::endl;
 }
 
-WrongCat::WrongCat(const WrongCat &other) {
-    _type = other.getType();
+WrongCat::WrongCat(const WrongCat &other) : WrongAnimal(other) {
     std::cout << "Copy constructor called for " << getType() << std::endl;
 }
 

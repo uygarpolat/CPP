@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 11:36:42 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/25 17:33:42 by upolat           ###   ########.fr       */
+/*   Updated: 2025/02/28 12:53:27 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ Cat::Cat() {
     _brain = new Brain();
 }
 
-Cat::Cat(const Cat &other) {
-    _type = other.getType();
+Cat::Cat(const Cat &other) : Animal(other) {
     _brain = new Brain(*(other._brain));
     std::cout << "Copy constructor called for " << getType() << std::endl;
 }

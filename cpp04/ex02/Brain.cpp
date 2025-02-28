@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 18:17:49 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/25 17:29:30 by upolat           ###   ########.fr       */
+/*   Updated: 2025/02/28 13:11:42 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void Brain::setIdea(std::string const &ideaString) {
         
         
 void Brain::getIdea(const unsigned int ideaNumber) const {
-    if (ideaNumber >= 0 && ideaNumber < _ideaCounter)
+    if (ideaNumber < _ideaCounter)
         std::cout << ideas[ideaNumber] << std::endl;
     else
         std::cout << "This brain cannot retrieve that idea!" << std::endl;

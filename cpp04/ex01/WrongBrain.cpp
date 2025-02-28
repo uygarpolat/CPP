@@ -48,7 +48,7 @@ void WrongBrain::setIdea(std::string const &ideaString) {
         
         
 void WrongBrain::getIdea(const unsigned int ideaNumber) const {
-    if (ideaNumber >= 0 && ideaNumber < _ideaCounter)
+    if (ideaNumber < _ideaCounter)
         std::cout << ideas[ideaNumber] << std::endl;
     else
         std::cout << "This WrongBrain cannot retrieve that idea!" << std::endl;
