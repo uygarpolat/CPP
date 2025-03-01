@@ -6,13 +6,13 @@
 #    By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/27 09:52:25 by upolat            #+#    #+#              #
-#    Updated: 2024/11/28 20:14:49 by upolat           ###   ########.fr        #
+#    Updated: 2025/03/01 18:39:47 by upolat           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = Form
-CXX = g++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++23
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++20
 
 SOURCES = 	main.cpp Bureaucrat.cpp AForm.cpp \
 			ShrubberyCreationForm.cpp RobotomyRequestForm.cpp \
@@ -28,7 +28,12 @@ $(NAME): $(OBJECTS)
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-fclean:
-	rm -f $(OBJECTS) $(NAME)
+clean:
+	rm -f $(OBJECTS)
 
-.PHONY: all fclean
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re
