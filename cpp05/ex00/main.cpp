@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 09:57:51 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/27 17:24:03 by upolat           ###   ########.fr       */
+/*   Updated: 2025/03/01 19:20:26 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int main(void) {
         std::cout << e.what();
     }
     
-    // Creating a bureaucrat with too low grade, should throw "Grade too high" exception
+    // Creating a bureaucrat with too high grade, should throw "Grade too high" exception
     std::cout << "***** TEST 3*****" << std::endl;
     try {
         Bureaucrat b4(0, "Higher Highson");
