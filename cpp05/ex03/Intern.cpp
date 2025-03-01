@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 22:17:31 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/29 00:19:07 by upolat           ###   ########.fr       */
+/*   Updated: 2025/03/02 00:51:38 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,27 @@ Intern &Intern::operator=(const Intern &other) {
 Intern::~Intern() {}
 
 AForm *Intern::makeForm(std::string formName, std::string formTarget) {
+    AForm *shrub = nullptr;
+    AForm *robo = nullptr;
+    AForm *pres = nullptr;
+    
+    try {
+        shrub = new ShrubberyCreationForm(formTarget);
+        robo = new RobotomyRequestForm(formTarget);
+        pres = new PresidentialPardonForm(formTarget);
+    } catch (std::bad_alloc &e) {
+        delete shrub;
+        delete robo;
+        delete pres;
+        throw;
+    }
+    
     std::string formNames[] = {"shrubbery creation", "robotomy request", "presidential pardon"};
-    
-    AForm *shrub = new ShrubberyCreationForm(formTarget);
-    AForm *robo = new RobotomyRequestForm(formTarget);
-    AForm *pres = new PresidentialPardonForm(formTarget);
-    
     AForm *forms[] = {shrub, robo, pres};
 
     for (int i = 0; i < 3; i++) {
         if (formName == formNames[i]) {
+            // Delete the unused forms.
             delete forms[(i + 1) % 3];
             delete forms[(i + 2) % 3];
             std::cout << "Intern creates " << formNames[i] << std::endl;
