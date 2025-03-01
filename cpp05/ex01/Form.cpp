@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 17:32:06 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/28 01:02:20 by upolat           ###   ########.fr       */
+/*   Updated: 2025/03/01 20:56:26 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,13 @@ int Form::getExecuteGrade(void) const {
     return _executeGrade;
 }
 
-const char *Form::GradeTooHighException::what() const throw() {
+const char *Form::GradeTooHighException::what() const noexcept {
     return "Grade too high!\n";
 }
-const char *Form::GradeTooLowException::what() const throw() {
+const char *Form::GradeTooLowException::what() const noexcept {
     return "Grade too low!\n";
 }
-const char *Form::FormAlreadySignedException::what() const throw() {
+const char *Form::FormAlreadySignedException::what() const noexcept {
     return "Form already signed!\n";
 }
 
