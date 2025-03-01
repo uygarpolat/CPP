@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 09:56:17 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/27 17:20:33 by upolat           ###   ########.fr       */
+/*   Updated: 2025/03/01 20:10:52 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ Bureaucrat::Bureaucrat(int grade, const std::string &name)
             throw GradeTooLowException();
 }
 
-const char *Bureaucrat::GradeTooHighException::what() const throw() {
+const char *Bureaucrat::GradeTooHighException::what() const noexcept {
     return "Grade too high!\n";
 }
 
-const char *Bureaucrat::GradeTooLowException::what() const throw() {
+const char *Bureaucrat::GradeTooLowException::what() const noexcept {
     return "Grade too low!\n";
 }
 
