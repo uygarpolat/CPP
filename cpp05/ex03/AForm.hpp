@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 17:32:15 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/28 21:04:49 by upolat           ###   ########.fr       */
+/*   Updated: 2025/03/02 00:17:18 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,19 @@ class AForm {
         
         class GradeTooHighException : public std::exception {
 			public:
-				const char* what() const throw();
+				const char* what() const noexcept override;
 		};
 		class GradeTooLowException : public std::exception {
 			public:
-				const char* what() const throw();
+				const char* what() const noexcept override;
 		};
         class FormAlreadySignedException : public std::exception {
 			public:
-				const char* what() const throw();
+				const char* what() const noexcept override;
 		};
         class SignatureIncompleteException : public std::exception {
 			public:
-				const char* what() const throw();
+				const char* what() const noexcept override;
 		};
 
         std::string const &getName(void) const;
