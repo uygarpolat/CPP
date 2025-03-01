@@ -15,7 +15,7 @@
 
 AForm::AForm() : _name("Unknown Form"), _signed(false), _signGrade(150), _executeGrade(150) {}
 
-AForm::AForm(const std::string &name, int signGrade, int executeGrade)
+AForm::AForm(const std::string &name, int executeGrade, int signGrade)
     : _name(name), _signGrade(signGrade), _executeGrade(executeGrade) {
         _signed = false;
         if (_signGrade < 1 || _executeGrade < 1)
@@ -49,16 +49,16 @@ int AForm::getExecuteGrade(void) const {
     return _executeGrade;
 }
 
-const char *AForm::GradeTooHighException::what() const throw() {
+const char *AForm::GradeTooHighException::what() const noexcept {
     return "Grade too high!\n";
 }
-const char *AForm::GradeTooLowException::what() const throw() {
+const char *AForm::GradeTooLowException::what() const noexcept {
     return "Grade too low!\n";
 }
-const char *AForm::FormAlreadySignedException::what() const throw() {
+const char *AForm::FormAlreadySignedException::what() const noexcept {
     return "Form already signed!\n";
 }
-const char *AForm::SignatureIncompleteException::what() const throw() {
+const char *AForm::SignatureIncompleteException::what() const noexcept {
     return "Form net yet signed!\n";
 }
 

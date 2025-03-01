@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 09:56:51 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/28 18:05:36 by upolat           ###   ########.fr       */
+/*   Updated: 2025/03/01 23:28:31 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ class Bureaucrat {
 
         class GradeTooHighException : public std::exception {
 			public:
-				const char* what() const throw();
+				const char* what() const noexcept override;
 		};
 
 		class GradeTooLowException : public std::exception {
 			public:
-				const char* what() const throw();
+				const char* what() const noexcept override;
 		};
 
         int getGrade(void) const;

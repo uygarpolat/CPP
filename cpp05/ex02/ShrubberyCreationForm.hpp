@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 12:36:04 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/28 21:19:04 by upolat           ###   ########.fr       */
+/*   Updated: 2025/03/01 23:29:00 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ class ShrubberyCreationForm : public AForm {
 
         class OpenFileException : public std::exception {
 			public:
-				const char* what() const throw();
+				const char* what() const noexcept override;
 		};
 
     private:

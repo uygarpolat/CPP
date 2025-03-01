@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 12:36:01 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/28 21:19:00 by upolat           ###   ########.fr       */
+/*   Updated: 2025/03/01 23:29:14 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ const std::string ShrubberyCreationForm::getTarget(void) const {
     return _target;
 }
 
-const char *ShrubberyCreationForm::OpenFileException::what() const throw() {
+const char *ShrubberyCreationForm::OpenFileException::what() const noexcept {
     return "Cannot open outfile!\n";
 }
 
