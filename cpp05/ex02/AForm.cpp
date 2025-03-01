@@ -15,7 +15,7 @@
 
 AForm::AForm() : _name("Unknown Form"), _signed(false), _signGrade(150), _executeGrade(150) {}
 
-AForm::AForm(const std::string &name, int executeGrade, int signGrade)
+AForm::AForm(const std::string &name, int signGrade, int executeGrade)
     : _name(name), _signGrade(signGrade), _executeGrade(executeGrade) {
         _signed = false;
         if (_signGrade < 1 || _executeGrade < 1)

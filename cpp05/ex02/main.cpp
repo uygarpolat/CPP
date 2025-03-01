@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 09:57:51 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/28 20:18:57 by upolat           ###   ########.fr       */
+/*   Updated: 2025/03/02 00:10:13 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,15 +60,25 @@ int main(void) {
     Bureaucrat buro2(40, "Gale");
     buro2.signForm(*robo);
     buro2.executeForm(*robo);
-
     delete robo;
 
     AForm *bandit = new PresidentialPardonForm("bandit");
     Bureaucrat buro3(3, "Marvin");
     buro3.signForm(*bandit);
     buro3.executeForm(*bandit);
+	delete bandit;
 
-    delete bandit;
-    
+	AForm *bandit2 = new PresidentialPardonForm("bandit2");
+	try {
+		Bureaucrat buro4(150, "Imposter");
+		buro4.signForm(*bandit2);
+		buro4.executeForm(*bandit2);
+		delete bandit2;
+	}
+	catch (std::exception &e) {
+		delete bandit2;
+		std::cout << e.what();
+	}
+
     return 0;
 }
