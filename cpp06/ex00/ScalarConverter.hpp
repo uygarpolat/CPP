@@ -13,6 +13,15 @@
 #pragma once
 
 #include <string>
+#include <iostream>
+
+enum nativeType {
+	CHAR,
+	INTEGER,
+	FLOAT,
+	DOUBLE,
+	NONE
+  };
 
 class ScalarConverter {
     public:
@@ -20,6 +29,16 @@ class ScalarConverter {
         ScalarConverter(const ScalarConverter &other);
         ScalarConverter &operator=(const ScalarConverter &other);
         ~ScalarConverter();
+
+		class ImpossibleException : public std::exception {
+			public:
+				const char* what() const noexcept override;
+		};
+
+		class NonDisplayableException : public std::exception {
+			public:
+				const char* what() const noexcept override;
+		};
 
         static void convert(std::string input);
 };
