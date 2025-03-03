@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 14:35:20 by upolat            #+#    #+#             */
-/*   Updated: 2025/03/03 08:51:30 by upolat           ###   ########.fr       */
+/*   Updated: 2025/03/03 12:47:45 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@ int main(int argc, char **argv) {
     if (argc != 2)
         return 1;
     
-    ScalarConverter a;
-	//std::string arg = argv[1];
-
-	a.convert(static_cast<std::string>(argv[1]));
+    try {
+        ScalarConverter::convert(argv[1]);
+    }
+    catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
 
     return 0;
 }

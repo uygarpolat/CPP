@@ -20,25 +20,17 @@ enum nativeType {
 	INTEGER,
 	FLOAT,
 	DOUBLE,
+	PSEUDO_DOUBLE,
+	PSEUDO_FLOAT,
 	NONE
   };
 
 class ScalarConverter {
-    public:
+    private:
         ScalarConverter();
         ScalarConverter(const ScalarConverter &other);
         ScalarConverter &operator=(const ScalarConverter &other);
         ~ScalarConverter();
-
-		class ImpossibleException : public std::exception {
-			public:
-				const char* what() const noexcept override;
-		};
-
-		class NonDisplayableException : public std::exception {
-			public:
-				const char* what() const noexcept override;
-		};
-
+	public:
         static void convert(std::string input);
 };
