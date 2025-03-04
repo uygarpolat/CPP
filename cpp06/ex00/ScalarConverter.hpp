@@ -14,14 +14,13 @@
 
 #include <string>
 #include <iostream>
+#include <cfloat>
 
 enum nativeType {
 	CHAR,
 	INTEGER,
 	FLOAT,
 	DOUBLE,
-	PSEUDO_DOUBLE,
-	PSEUDO_FLOAT,
 	NONE
   };
 
@@ -31,6 +30,12 @@ class ScalarConverter {
         ScalarConverter(const ScalarConverter &other);
         ScalarConverter &operator=(const ScalarConverter &other);
         ~ScalarConverter();
+
+		static int IsOverflow(const double &d);
+		static void handleChar(const char &c, const int &overflow);
+		static int getNativeType(std::string &input);
+		static void printAllTypes(char valueChar, int valueInt,
+			float valueFloat, double valueDouble, int overflow);
 	public:
         static void convert(std::string input);
 };

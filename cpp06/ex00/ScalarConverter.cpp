@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 14:31:14 by upolat            #+#    #+#             */
-/*   Updated: 2025/03/03 15:35:58 by upolat           ###   ########.fr       */
+/*   Updated: 2025/03/04 20:58:05 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,44 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other) {
 
 ScalarConverter::~ScalarConverter() {}
 
-int getNativeType(std::string &input) {
+int ScalarConverter::IsOverflow(const double &d)
+{
+		if (d < nextafter(nextafter(-FLT_MAX, 0), -FLT_MAX) || nextafter(nextafter(FLT_MAX, 0), FLT_MAX) < d)
+    		return 3;
+		if (d < nextafter(nextafter(INT_MIN, 0), INT_MIN) || nextafter(nextafter(INT_MAX, 0), INT_MAX) < d)
+    		return 2;
+		if (d < nextafter(nextafter(CHAR_MIN, 0), CHAR_MIN) || nextafter(nextafter(CHAR_MAX, 0), CHAR_MAX) < d)
+    		return 1;	
+		return 0;
+}
+
+void ScalarConverter::handleChar(const char &c, const int &overflow)
+{
+	std::cout << "char: ";
+	if (overflow > 0)
+		std::cout << "impossible" << std::endl;
+	else
+	{
+		if (std::isprint(c))
+		{
+			if (!overflow)
+				std::cout << "'";
+			std::cout << c;
+			if (!overflow)
+				std::cout << "'";
+			std::cout << std::endl;
+		}
+		else
+			std::cout << "Not Displayable" << std::endl;
+	}		
+}
+
+int ScalarConverter::getNativeType(std::string &input) {
 
 	if (!input.compare("+inf") || !input.compare("-inf") || !input.compare("nan"))
-		return PSEUDO_DOUBLE;
+		return DOUBLE;
 	if (!input.compare("+inff") || !input.compare("-inff") || !input.compare("nanf"))
-		return PSEUDO_FLOAT;
+		return FLOAT;
 
 	if (input == "")
 		return NONE;
@@ -48,8 +80,6 @@ int getNativeType(std::string &input) {
 	if (input.find_first_of("0123456789") == std::string::npos)
 		return NONE;
 	
-
-
 	std::string arg = input;
 	if (len && (input[0] == '-' || input[0] == '+'))
 		arg = input.substr(1, --len);
@@ -80,86 +110,71 @@ int getNativeType(std::string &input) {
 	return type;
 }
 
+void ScalarConverter::printAllTypes(char valueChar, int valueInt, float valueFloat, double valueDouble, int overflow) {
+	handleChar(valueChar, overflow);
+	if (overflow > 1)
+		std::cout << "int: impossible" << std::endl;
+	else
+		std::cout << "int: " << valueInt << std::endl;
+	if (overflow > 2)
+		std::cout << "float: impossible" << std::endl;
+	else
+		std::cout << "float: " << valueFloat << "f" << std::endl;
+	std::cout << "double: " << valueDouble << std::endl;
+}
+
 void ScalarConverter::convert(std::string input) {
-    int native_type = getNativeType(input);
+    
+	int		native_type = getNativeType(input);
 	
-	int value_int;
-	float value_float;
-	double value_double;
-	char value_char;
+	int		valueInt;
+	float	valueFloat;
+	double	valueDouble;
+	char	valueChar;
+	int		overflow;
 	
 	switch(native_type) {
 		case INTEGER: 
-		
-			value_int = std::stoi(input);
+			valueInt = std::stoi(input);
 			
-			value_float = static_cast<float>(value_int);
-			value_double = static_cast<double>(value_int);
-			value_char = static_cast<char>(value_int);
-		
-			if (!std::isprint(value_char))
-				std::cout << "char: Non displayable" << std::endl;
-			else
-				std::cout << "char: '" << value_char << "'" << std::endl;
-		
-			std::cout << "int: " << value_int << std::endl;
-			std::cout << "float: " << value_float << "f" << std::endl;
-			std::cout << "double: " << value_double << std::endl;
+			valueFloat = static_cast<float>(valueInt);
+			valueDouble = static_cast<double>(valueInt);
+			valueChar = static_cast<char>(valueInt);
+			
+			overflow = IsOverflow(std::stod(input));
+			printAllTypes(valueChar, valueInt, valueFloat, valueDouble, overflow);
 			break;
-		
 		case CHAR:
-			value_char = input[0];
+			valueChar = input[0];
 
-			value_float = static_cast<float>(value_char);
-			value_double = static_cast<double>(value_char);
-			value_int = static_cast<int>(value_char);
-			
-			if (!std::isprint(value_char))
-				std::cout << "char: Non displayable" << std::endl;
-			else
-				std::cout << "char: '" << value_char << "'" << std::endl;
-		
-			std::cout << "int: " << value_int << std::endl;
-			std::cout << "float: " << value_float << "f" << std::endl;
-			std::cout << "double: " << value_double << std::endl;
+			valueFloat = static_cast<float>(valueChar);
+			valueDouble = static_cast<double>(valueChar);
+			valueInt = static_cast<int>(valueChar);
+
+			overflow = -1;
+			printAllTypes(valueChar, valueInt, valueFloat, valueDouble, overflow);
 			break;
 		case FLOAT:
-			value_float = std::stof(input);
+			valueFloat = std::stof(input);
 
-			value_int = static_cast<int>(value_float);
-			value_double = static_cast<double>(value_float);
-			value_char = static_cast<char>(value_float);
+			valueInt = static_cast<int>(valueFloat);
+			valueDouble = static_cast<double>(valueFloat);
+			valueChar = static_cast<char>(valueFloat);
 			
-			if (!std::isprint(value_char))
-				std::cout << "char: Non displayable" << std::endl;
-			else
-				std::cout << "char: '" << value_char << "'" << std::endl;
-		
-			std::cout << "int: " << value_int << std::endl;
-			std::cout << "float: " << value_float << "f" << std::endl;
-			std::cout << "double: " << value_double << std::endl;
+			overflow = IsOverflow(std::stod(input));
+			printAllTypes(valueChar, valueInt, valueFloat, valueDouble, overflow);
 			break;
 		case DOUBLE:
-			value_double = std::stod(input);
-
-			value_int = static_cast<int>(value_double);
-			value_float = static_cast<float>(value_double);
-			value_char = static_cast<char>(value_double);
+			valueDouble = std::stod(input);
 			
-			if (!std::isprint(value_char))
-				std::cout << "char: Non displayable" << std::endl;
-			else
-				std::cout << "char: '" << value_char << "'" << std::endl;
-		
-			std::cout << "int: " << value_int << std::endl;
-			std::cout << "float: " << value_float << "f" << std::endl;
-			std::cout << "double: " << value_double << std::endl;
+			valueInt = static_cast<int>(valueDouble);
+			valueFloat = static_cast<float>(valueDouble);
+			valueChar = static_cast<char>(valueDouble);
+			
+			overflow = IsOverflow(std::stod(input));
+			printAllTypes(valueChar, valueInt, valueFloat, valueDouble, overflow);
 			break;
-
-		
-		case NONE:
-			std::cout << "Invalid input" << std::endl;
 		default:
-			break;
+			std::cout << "Invalid input" << std::endl;
 	}
 }
