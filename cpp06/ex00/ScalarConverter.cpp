@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 14:31:14 by upolat            #+#    #+#             */
-/*   Updated: 2025/03/04 20:58:05 by upolat           ###   ########.fr       */
+/*   Updated: 2025/03/05 00:16:41 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ ScalarConverter::ScalarConverter(const ScalarConverter &other) {
 
 ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other) {
     if (this != &other) {
-		
+		(void)other;
     }
     return *this;
 }
@@ -116,6 +116,9 @@ void ScalarConverter::printAllTypes(char valueChar, int valueInt, float valueFlo
 		std::cout << "int: impossible" << std::endl;
 	else
 		std::cout << "int: " << valueInt << std::endl;
+
+	std::cout << std::fixed << std::setprecision(1);
+		
 	if (overflow > 2)
 		std::cout << "float: impossible" << std::endl;
 	else
@@ -162,13 +165,15 @@ void ScalarConverter::convert(std::string input) {
 			valueChar = static_cast<char>(valueFloat);
 			
 			overflow = IsOverflow(std::stod(input));
+			std::cout << "overflow: " << overflow << std::endl;
 			printAllTypes(valueChar, valueInt, valueFloat, valueDouble, overflow);
 			break;
 		case DOUBLE:
 			valueDouble = std::stod(input);
-			
+			std::cout << valueDouble << std::endl;
 			valueInt = static_cast<int>(valueDouble);
 			valueFloat = static_cast<float>(valueDouble);
+			std::cout << valueFloat << std::endl;
 			valueChar = static_cast<char>(valueDouble);
 			
 			overflow = IsOverflow(std::stod(input));
