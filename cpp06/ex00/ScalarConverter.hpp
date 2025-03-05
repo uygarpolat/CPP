@@ -33,7 +33,7 @@ class ScalarConverter {
         ~ScalarConverter();
 
 		static int IsOverflow(const double &d);
-		static void handleChar(const char &c, const int &overflow);
+		static void handleChar(const char &c, const int &overflow, const int &pseudoFlag);
 		static int getNativeType(std::string &input);
 		static void printAllTypes(char valueChar, int valueInt,
 			float valueFloat, double valueDouble, int overflow);

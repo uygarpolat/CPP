@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 14:31:14 by upolat            #+#    #+#             */
-/*   Updated: 2025/03/05 00:16:41 by upolat           ###   ########.fr       */
+/*   Updated: 2025/03/05 10:06:37 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ int ScalarConverter::IsOverflow(const double &d)
 		return 0;
 }
 
-void ScalarConverter::handleChar(const char &c, const int &overflow)
+void ScalarConverter::handleChar(const char &c, const int &overflow, const int &pseudoFlag)
 {
 	std::cout << "char: ";
-	if (overflow > 0)
+	if (overflow > 0 || pseudoFlag)
 		std::cout << "impossible" << std::endl;
 	else
 	{
@@ -111,15 +111,18 @@ int ScalarConverter::getNativeType(std::string &input) {
 }
 
 void ScalarConverter::printAllTypes(char valueChar, int valueInt, float valueFloat, double valueDouble, int overflow) {
-	handleChar(valueChar, overflow);
-	if (overflow > 1)
+	int pseudoFlag = 0;
+	if (std::isnan(valueDouble))
+		pseudoFlag = 1;
+	handleChar(valueChar, overflow, pseudoFlag);
+	if (overflow > 1 || pseudoFlag)
 		std::cout << "int: impossible" << std::endl;
 	else
 		std::cout << "int: " << valueInt << std::endl;
 
 	std::cout << std::fixed << std::setprecision(1);
 		
-	if (overflow > 2)
+	if (overflow > 2 && !std::isinf(valueFloat))
 		std::cout << "float: impossible" << std::endl;
 	else
 		std::cout << "float: " << valueFloat << "f" << std::endl;
@@ -163,18 +166,26 @@ void ScalarConverter::convert(std::string input) {
 			valueInt = static_cast<int>(valueFloat);
 			valueDouble = static_cast<double>(valueFloat);
 			valueChar = static_cast<char>(valueFloat);
+
+			std::cout << "valueChar: " << valueChar << std::endl;
+			std::cout << "valueInt: " << valueInt << std::endl;
+			std::cout << "valueFloat: " << valueFloat << std::endl;
+			std::cout << "valueDouble: " << valueDouble << std::endl;
 			
 			overflow = IsOverflow(std::stod(input));
-			std::cout << "overflow: " << overflow << std::endl;
 			printAllTypes(valueChar, valueInt, valueFloat, valueDouble, overflow);
 			break;
 		case DOUBLE:
 			valueDouble = std::stod(input);
-			std::cout << valueDouble << std::endl;
+			
 			valueInt = static_cast<int>(valueDouble);
 			valueFloat = static_cast<float>(valueDouble);
-			std::cout << valueFloat << std::endl;
 			valueChar = static_cast<char>(valueDouble);
+
+			std::cout << "valueChar: " << valueChar << std::endl;
+			std::cout << "valueInt: " << valueInt << std::endl;
+			std::cout << "valueFloat: " << valueFloat << std::endl;
+			std::cout << "valueDouble: " << valueDouble << std::endl;
 			
 			overflow = IsOverflow(std::stod(input));
 			printAllTypes(valueChar, valueInt, valueFloat, valueDouble, overflow);
