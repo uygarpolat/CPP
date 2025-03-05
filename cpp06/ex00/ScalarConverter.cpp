@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 14:31:14 by upolat            #+#    #+#             */
-/*   Updated: 2025/03/05 10:06:37 by upolat           ###   ########.fr       */
+/*   Updated: 2025/03/05 10:32:55 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,11 @@ void ScalarConverter::printAllTypes(char valueChar, int valueInt, float valueFlo
 		std::cout << "int: " << valueInt << std::endl;
 
 	std::cout << std::fixed << std::setprecision(1);
+
+	std::cout << "overflow: " << overflow << std::endl;
 		
+	// This line is causing issues for an input like this:
+	// ./scalar 11111111111111111111111111111111111111111111111111111111111.
 	if (overflow > 2 && !std::isinf(valueFloat))
 		std::cout << "float: impossible" << std::endl;
 	else
@@ -166,11 +170,6 @@ void ScalarConverter::convert(std::string input) {
 			valueInt = static_cast<int>(valueFloat);
 			valueDouble = static_cast<double>(valueFloat);
 			valueChar = static_cast<char>(valueFloat);
-
-			std::cout << "valueChar: " << valueChar << std::endl;
-			std::cout << "valueInt: " << valueInt << std::endl;
-			std::cout << "valueFloat: " << valueFloat << std::endl;
-			std::cout << "valueDouble: " << valueDouble << std::endl;
 			
 			overflow = IsOverflow(std::stod(input));
 			printAllTypes(valueChar, valueInt, valueFloat, valueDouble, overflow);
@@ -181,11 +180,6 @@ void ScalarConverter::convert(std::string input) {
 			valueInt = static_cast<int>(valueDouble);
 			valueFloat = static_cast<float>(valueDouble);
 			valueChar = static_cast<char>(valueDouble);
-
-			std::cout << "valueChar: " << valueChar << std::endl;
-			std::cout << "valueInt: " << valueInt << std::endl;
-			std::cout << "valueFloat: " << valueFloat << std::endl;
-			std::cout << "valueDouble: " << valueDouble << std::endl;
 			
 			overflow = IsOverflow(std::stod(input));
 			printAllTypes(valueChar, valueInt, valueFloat, valueDouble, overflow);
