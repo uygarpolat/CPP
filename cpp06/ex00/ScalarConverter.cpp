@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 14:31:14 by upolat            #+#    #+#             */
-/*   Updated: 2025/03/05 10:32:55 by upolat           ###   ########.fr       */
+/*   Updated: 2025/03/05 17:01:23 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,11 +122,7 @@ void ScalarConverter::printAllTypes(char valueChar, int valueInt, float valueFlo
 
 	std::cout << std::fixed << std::setprecision(1);
 
-	std::cout << "overflow: " << overflow << std::endl;
-		
-	// This line is causing issues for an input like this:
-	// ./scalar 11111111111111111111111111111111111111111111111111111111111.
-	if (overflow > 2 && !std::isinf(valueFloat))
+	if (overflow > 2 && !std::isinf(valueDouble))
 		std::cout << "float: impossible" << std::endl;
 	else
 		std::cout << "float: " << valueFloat << "f" << std::endl;
