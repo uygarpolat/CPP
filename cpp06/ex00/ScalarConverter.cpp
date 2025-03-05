@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 14:31:14 by upolat            #+#    #+#             */
-/*   Updated: 2025/03/05 17:01:23 by upolat           ###   ########.fr       */
+/*   Updated: 2025/03/05 20:07:07 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,13 @@ void ScalarConverter::handleChar(const char &c, const int &overflow, const int &
 
 int ScalarConverter::getNativeType(std::string &input) {
 
+	if (input == "")
+	return NONE;
+
 	if (!input.compare("+inf") || !input.compare("-inf") || !input.compare("nan"))
 		return DOUBLE;
 	if (!input.compare("+inff") || !input.compare("-inff") || !input.compare("nanf"))
 		return FLOAT;
-
-	if (input == "")
-		return NONE;
 
 	int len = input.length();
 	if (len == 1) {
