@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 17:17:28 by upolat            #+#    #+#             */
-/*   Updated: 2025/03/05 17:17:30 by upolat           ###   ########.fr       */
+/*   Updated: 2025/03/06 09:38:29 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,4 +18,5 @@ struct Data
 {
 	int			value;
 	std::string	str;
+	bool		flag;
 };
