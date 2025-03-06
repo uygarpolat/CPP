@@ -6,11 +6,11 @@
 #    By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/06 17:06:48 by upolat            #+#    #+#              #
-#    Updated: 2025/03/06 17:06:50 by upolat           ###   ########.fr        #
+#    Updated: 2025/03/06 18:47:40 by upolat           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = whatever
+NAME = iter
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++20
 
