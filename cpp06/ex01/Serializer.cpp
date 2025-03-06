@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 17:11:25 by upolat            #+#    #+#             */
-/*   Updated: 2025/03/05 17:26:17 by upolat           ###   ########.fr       */
+/*   Updated: 2025/03/06 09:41:39 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,8 @@ Serializer &Serializer::operator=(const Serializer &other) {
 Serializer::~Serializer() {}
 
 uintptr_t Serializer::serialize(Data* ptr) {
-	uintptr_t raw = reinterpret_cast<uintptr_t>(ptr);
-	return raw;
+	return reinterpret_cast<uintptr_t>(ptr);
 }
 Data* Serializer::deserialize(uintptr_t raw) {
-	Data *ptr = reinterpret_cast<Data*>(raw);
-	return ptr;
+	return reinterpret_cast<Data*>(raw);
 }
