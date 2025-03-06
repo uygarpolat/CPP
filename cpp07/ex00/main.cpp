@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 10:06:52 by upolat            #+#    #+#             */
-/*   Updated: 2025/03/06 10:25:22 by upolat           ###   ########.fr       */
+/*   Updated: 2025/03/06 16:31:27 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int main(void) {
 	std::cout << max(42.4242, 42.5252) << std::endl;
 	std::cout << min('a', 'b') << std::endl;
 	std::cout << min<int>('a', 'b') << std::endl;
+	std::cout << min<double>(1,  3.1) << std::endl;
 
 	int first = -100;
 	int second = 100;
