@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 20:09:04 by upolat            #+#    #+#             */
-/*   Updated: 2024/11/28 21:18:42 by upolat           ###   ########.fr       */
+/*   Updated: 2025/03/27 11:05:34 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,5 @@ void PresidentialPardonForm::execute(Bureaucrat const & executor) const {
 		throw AForm::SignatureIncompleteException();
 	if (executor.getGrade() > getExecuteGrade())
 		throw AForm::GradeTooLowException();
-	std::cout << getTarget() << " has been pardoned by Zaphod Beeblebrox." << std::endl;;
+	std::cout << getTarget() << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }
