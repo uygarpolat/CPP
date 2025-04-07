@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 22:48:21 by upolat            #+#    #+#             */
-/*   Updated: 2025/03/06 00:58:17 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/07 10:33:04 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,9 @@ int main(void) {
 	identify(test_ref2);
 	identify(test_ref3);
 	identify(test_ref4);
+
+	Base *nullTest = nullptr;
+	identify(nullTest);
 
 	return 0;
 }
