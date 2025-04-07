@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 22:48:21 by upolat            #+#    #+#             */
-/*   Updated: 2025/04/07 10:33:04 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/07 11:18:06 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int main(void) {
 
 	std::srand(time(NULL));
 	
-	std::cout << "Identify pointers:" << std::endl;
+	std::cout << GREEN << "Identify pointers:" << DEFAULT << std::endl;
 	
 	Base* test1 = generate();
 	Base* test2 = generate();
@@ -46,7 +46,7 @@ int main(void) {
 	delete test6;
 	delete test7;
 
-	std::cout << std::endl << "Identify references:" << std::endl;
+	std::cout << GREEN << "Identify references:" << DEFAULT << std::endl;
 	
 	A test_ref1;
 	B test_ref2;
