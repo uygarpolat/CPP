@@ -6,19 +6,25 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 10:06:52 by upolat            #+#    #+#             */
-/*   Updated: 2025/03/06 16:31:27 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/07 16:43:40 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "whatever.hpp"
 #include "iostream"
+#include "assert.h"
 
 int main(void) {
 	std::cout << max(3,5) << std::endl;
+	assert(max(3,5) == 5);
 	std::cout << max(42.4242, 42.5252) << std::endl;
+	assert(max(42.4242, 42.5252) == 42.5252);
 	std::cout << min('a', 'b') << std::endl;
+	assert(min('a', 'b') == 'a');
 	std::cout << min<int>('a', 'b') << std::endl;
+	assert(min<int>('a', 'b') == 'a');
 	std::cout << min<double>(1,  3.1) << std::endl;
+	assert(min<double>(1,  3.1) == 1);
 
 	int first = -100;
 	int second = 100;
@@ -27,6 +33,8 @@ int main(void) {
 	swap(first, second);
 	std::cout << first << std::endl;
 	std::cout << second << std::endl;
+	assert(first == 100);
+	assert(second == -100);
 
 	std::cout << std::endl << "Tests from the subject:" << std::endl << std::endl;
 
