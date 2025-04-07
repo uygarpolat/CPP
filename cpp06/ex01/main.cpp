@@ -6,16 +6,13 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 17:20:07 by upolat            #+#    #+#             */
-/*   Updated: 2025/04/07 10:28:26 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/07 11:17:15 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Serializer.hpp"
 #include "iostream"
 #include <cassert>
-
-#define GREEN "\033[32m"
-#define DEFAULT "\033[39m"
 
 int main(void) {
 	Data* test = new Data;

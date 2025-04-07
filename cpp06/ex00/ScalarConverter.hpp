@@ -17,6 +17,7 @@
 #include <cfloat>
 #include <iomanip>
 #include <cmath>
+#include <climits>
 
 enum nativeType {
 	CHAR,
