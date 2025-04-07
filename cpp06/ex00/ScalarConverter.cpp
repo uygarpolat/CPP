@@ -6,25 +6,15 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 14:31:14 by upolat            #+#    #+#             */
-/*   Updated: 2025/03/05 20:07:07 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/07 10:16:53 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
 ScalarConverter::ScalarConverter() {}
-
-ScalarConverter::ScalarConverter(const ScalarConverter &other) {
-	(void)other;
-}
-
-ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other) {
-    if (this != &other) {
-		(void)other;
-    }
-    return *this;
-}
-
+ScalarConverter::ScalarConverter(const ScalarConverter &other) { (void)other; }
+ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other) { (void)other; return *this;}
 ScalarConverter::~ScalarConverter() {}
 
 int ScalarConverter::IsOverflow(const double &d)
@@ -55,7 +45,7 @@ void ScalarConverter::handleChar(const char &c, const int &overflow, const int &
 			std::cout << std::endl;
 		}
 		else
-			std::cout << "Not Displayable" << std::endl;
+			std::cout << "Non displayable" << std::endl;
 	}		
 }
 

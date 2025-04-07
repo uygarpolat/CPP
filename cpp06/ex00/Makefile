@@ -6,11 +6,11 @@
 #    By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/29 12:07:28 by upolat            #+#    #+#              #
-#    Updated: 2025/03/05 17:04:59 by upolat           ###   ########.fr        #
+#    Updated: 2025/04/07 10:07:37 by upolat           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ScalarConversion
+NAME = convert
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++20
 
