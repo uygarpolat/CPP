@@ -6,13 +6,14 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 10:06:52 by upolat            #+#    #+#             */
-/*   Updated: 2025/04/07 16:43:40 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/07 21:11:47 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "whatever.hpp"
-#include "iostream"
-#include "assert.h"
+#include <iostream>
+#include <string>
+#include <assert.h>
 
 int main(void) {
 	std::cout << max(3,5) << std::endl;
