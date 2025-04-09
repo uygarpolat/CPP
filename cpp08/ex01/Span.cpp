@@ -1,8 +1,9 @@
 #include "Span.hpp"
 
 Span::Span() : _N(0) {}
-
 Span::Span(const Span &other) : _N(other._N), _data(other._data) {}
+Span::~Span() {}
+Span::Span(unsigned int N) : _N(N) {}
 
 Span &Span::operator=(const Span &other) {
 	if (this != &other) {
@@ -11,10 +12,6 @@ Span &Span::operator=(const Span &other) {
 	}
 	return *this;
 }
-
-Span::~Span() {}
-
-Span::Span(unsigned int N) : _N(N) {}
 
 void Span::addNumber(int num) {
 	if (_data.size() < _N)
