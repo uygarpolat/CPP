@@ -6,13 +6,13 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 17:07:17 by upolat            #+#    #+#             */
-/*   Updated: 2025/04/08 00:30:22 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/08 11:44:21 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "iter.hpp"
 
-template <class T> void print(T &x)
+template <class T> void print(T const &x)
 {
 	std::cout << x << std::endl;
 }
