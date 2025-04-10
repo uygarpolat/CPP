@@ -53,3 +53,13 @@ void	Span::addNumbers(std::vector<int> newData) {
 	else
 		_data.assign(newData.begin(), newData.end());
 }
+
+void Span::printContainer() const {
+	std::cout << YELLOW << "Container: " << DEFAULT;
+	for (size_t i = 0; i < _data.size(); i++) {
+		std::cout << _data[i];
+		if (i != _data.size() - 1)
+			std::cout << ", ";
+	}
+	std::cout << std::endl;
+}
