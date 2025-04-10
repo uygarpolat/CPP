@@ -20,21 +20,31 @@ void Span::addNumber(int num) {
 		throw std::runtime_error("Error: Attempting to overflow the container");
 }
 
-int Span::shortestSpan() {
+long long Span::shortestSpan() {
 	if (_data.size() < 2)
 		throw std::runtime_error("Error: Not enough elements to find a span");
-	std::sort(_data.begin(), _data.end());
-	std::vector<int> adDif = _data;
-	std::adjacent_difference(adDif.begin(), adDif.end(), adDif.begin());
-	adDif.erase(adDif.begin());
-	return	*std::min_element(adDif.begin() + 1, adDif.end());
+
+	std::vector<int> sorted = _data;
+	std::sort(sorted.begin(), sorted.end());
+
+	long long minSpan = static_cast<long long>(std::numeric_limits<long long>::max());
+
+	for (size_t i = 1; i < sorted.size(); i++) {
+		long long diff = static_cast<long long>(sorted[i]) - static_cast<long long>(sorted[i - 1]);
+		if (diff < minSpan)
+			minSpan = diff;
+	}
+
+	return minSpan;
 }
 
-int Span::longestSpan() {
+long long Span::longestSpan() {
 	if (_data.size() < 2)
 		throw std::runtime_error("Error: Not enough elements to find a span");
-	return	*std::max_element(_data.begin(), _data.end()) -
-			*std::min_element(_data.begin(), _data.end());
+
+	int max = *std::max_element(_data.begin(), _data.end());
+	int min = *std::min_element(_data.begin(), _data.end());
+	return static_cast<long long >(max) - static_cast<long long>(min);
 }
 
 void	Span::addNumbers(std::vector<int> newData) {

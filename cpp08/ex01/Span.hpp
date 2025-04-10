@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 22:09:58 by upolat            #+#    #+#             */
-/*   Updated: 2025/04/10 09:45:37 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/10 17:23:48 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <algorithm>
 #include <limits>
 #include <numeric>
+#include <iomanip>
 
 class Span {
 	public:
@@ -29,8 +30,8 @@ class Span {
 		
 		void				addNumber(int num);
 		void				addNumbers(std::vector<int> newData);
-		int					shortestSpan();
-		int					longestSpan();
+		long long			shortestSpan();
+		long long			longestSpan();
 	private:
 		unsigned int		_N;
 		std::vector<int>	_data;

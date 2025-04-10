@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 22:32:50 by upolat            #+#    #+#             */
-/*   Updated: 2025/04/10 10:36:48 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/10 17:24:02 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,19 @@ int main(void) {
 		span4.addNumbers(newData);
 		std::cout << span4.shortestSpan() << std::endl;
 		std::cout << span4.longestSpan() << std::endl;
+	}
+	catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
+
+	try {
+		std::cout << GREEN << "=== TEST 5 ===" << DEFAULT << std::endl;
+		Span span5(2);
+		span5.addNumber(std::numeric_limits<int>::max());
+		span5.addNumber(std::numeric_limits<int>::min());
+
+		std::cout << span5.shortestSpan() << std::endl;
+		std::cout << span5.longestSpan() << std::endl;
 	}
 	catch (std::exception &e) {
 		std::cerr << e.what() << std::endl;
