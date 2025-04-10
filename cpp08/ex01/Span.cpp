@@ -17,7 +17,7 @@ void Span::addNumber(int num) {
 	if (_data.size() < _N)
 		_data.push_back(num);
 	else
-		throw std::runtime_error("Error: Container is full");
+		throw std::runtime_error("Error: Attempting to overflow the container");
 }
 
 int Span::shortestSpan() {
@@ -35,4 +35,11 @@ int Span::longestSpan() {
 		throw std::runtime_error("Error: Not enough elements to find a span");
 	return	*std::max_element(_data.begin(), _data.end()) -
 			*std::min_element(_data.begin(), _data.end());
+}
+
+void	Span::addNumbers(std::vector<int> newData) {
+	if (newData.size() + _data.size() > _N)
+		throw std::runtime_error("Error: Attempting to overflow the container");
+	else
+		_data.assign(newData.begin(), newData.end());
 }
