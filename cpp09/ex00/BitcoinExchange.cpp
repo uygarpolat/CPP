@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 23:23:46 by upolat            #+#    #+#             */
-/*   Updated: 2025/04/12 20:50:56 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/12 21:02:53 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,11 @@ void BitcoinExchange::displayHoldings(std::string inputFile) {
 		
 	std::string amountStr = "";
 	std::string line;
+	std::getline(file, line);
+	if (line != "date | value")
+		throw std::runtime_error("Error: invalid file header");
+		
 	while (std::getline(file, line)) {
-		if (line == "date | value")
-			continue;
 		try {
 				
 			std::string date = line.substr(0, line.find('|'));
@@ -101,10 +103,6 @@ void BitcoinExchange::displayHoldings(std::string inputFile) {
 		}
 	}
 	file.close();
-}
-
-std::map<int, double> BitcoinExchange::getData() const {
-	return _data;
 }
 
 bool BitcoinExchange::_isValidDate(const std::string &dateStr) {

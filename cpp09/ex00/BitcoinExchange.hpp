@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 23:23:49 by upolat            #+#    #+#             */
-/*   Updated: 2025/04/12 19:36:31 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/12 20:59:52 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ class BitcoinExchange {
 
 		void parseCsv(std::string csvFile);
 		void displayHoldings(std::string inputFile);
-		std::map <int, double> getData() const;
 	private:
 		std::map <int, double> _data;
 		bool _isValidDate(const std::string &dateStr);
