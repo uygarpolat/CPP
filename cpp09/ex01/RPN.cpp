@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 01:03:40 by upolat            #+#    #+#             */
-/*   Updated: 2025/04/12 02:47:38 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/12 03:06:16 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,18 +52,16 @@ int RPN::_calculate(const char c) {
 	_data.pop();
 	int first = _data.top();
 	_data.pop();
-	
-	if (c == '*')
-		return first * second;
-	if (c == '/') {
-		if (second)
-			return first / second;
+
+	if (c == '/' && !second)
 		throw std::runtime_error("Error");
+		
+	switch (c) {
+		case '*': return first * second;
+		case '/': return first / second;
+		case '+': return first + second;
+		case '-': return first - second;
+		default:
+			throw std::runtime_error("Error");
 	}
-	if (c == '+')
-		return first + second;
-	if (c == '-')
-		return first - second;
-	else
-		throw std::runtime_error("Error");
 }
