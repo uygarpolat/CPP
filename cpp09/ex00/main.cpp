@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 23:23:43 by upolat            #+#    #+#             */
-/*   Updated: 2025/04/12 14:31:57 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/12 19:17:59 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ int main(int argc, char** argv) {
 		return 1;
 	}
 
-	std::map<int, double> data = btc.getData();
-	for (const auto &pair : data) {
-		std::cout << pair.first << ": " << pair.second << std::endl;
-	}
+	// std::map<int, double> data = btc.getData();
+	// for (const auto &pair : data) {
+	// 	std::cout << pair.first << ": " << pair.second << std::endl;
+	// }
 
 
 

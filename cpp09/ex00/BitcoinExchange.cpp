@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 23:23:46 by upolat            #+#    #+#             */
-/*   Updated: 2025/04/12 15:29:08 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/12 18:53:58 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,10 @@ void BitcoinExchange::parseCsv(std::string csvFile) {
 				throw std::runtime_error("Error: bad input => " + date);
 			// replace all '-' with empty string, super fancy
 			date.erase(std::remove(date.begin(), date.end(), '-'), date.end());
-			int dateInt = std::stoi(date);
-			double value = stod(line.substr(line.find(',') + 1));
-			_data[dateInt] = value;
+			int dateInt = stoi(date);
+			
+			double rate = stod(line.substr(line.find(',') + 1));
+			_data[dateInt] = rate;
 		}
 		catch (std::exception &e) {
 			continue;
@@ -51,7 +52,51 @@ void BitcoinExchange::parseCsv(std::string csvFile) {
 }
 
 void BitcoinExchange::displayHoldings(std::string inputFile) {
-	(void)inputFile;
+	
+	std::ifstream file(inputFile);
+	if (!file.is_open())
+		throw std::runtime_error("Error: could not open file");
+		
+	std::string line;
+	while (std::getline(file, line)) {
+		try {
+			
+			double amount = stod(line.substr(line.find('|') + 1));
+
+			if (amount < 0)
+				throw std::runtime_error("Error: not a positive number.");
+			if (amount > 1000)
+				throw std::runtime_error("Error: too large a number.");
+				
+			std::string date = line.substr(0, line.find('|'));
+			if (!_isValidDate(date))
+				throw std::runtime_error("Error: bad input => " + date);
+			std::string dateBackup = date;
+			// replace all '-' with empty string, super fancy
+			date.erase(std::remove(date.begin(), date.end(), '-'), date.end());
+			int dateInt = stoi(date);
+
+			int beginningOfHistoricalData = _data.begin()->first;
+			while (dateInt >= beginningOfHistoricalData) {
+				if (_data.contains(dateInt))
+					break;
+				else
+					--dateInt;
+			}
+
+			if (dateInt < beginningOfHistoricalData)
+				throw std::runtime_error("Error: historical data not found => " + dateBackup);
+
+			std::cout << dateBackup << "=> " << amount << " = " << amount * _data[dateInt] << std::endl;
+		}
+		catch (const std::invalid_argument& e) {
+			continue;
+		}
+		catch (std::exception &e) {
+			std::cout << e.what() << std::endl;
+		}
+	}
+	file.close();
 }
 
 std::map<int, double> BitcoinExchange::getData() const {
@@ -75,4 +120,16 @@ bool BitcoinExchange::_isValidDate(const std::string &dateStr) {
         std::chrono::day{static_cast<unsigned int>(t.tm_mday)}
     };
     return ymd.ok();
+}
+
+std::string BitcoinExchange::_dateIntToDateStrFormatted(int dateInt) {
+	
+	std::string dateStr = std::to_string(dateInt);
+	std::string dateStrFormatted =	dateStr.substr(0, 4) +
+									"-" +
+									dateStr.substr(4, 2) +
+									"-" +
+									dateStr.substr(6, 2);
+
+	return dateStrFormatted;
 }

@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 23:23:49 by upolat            #+#    #+#             */
-/*   Updated: 2025/04/12 15:16:17 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/12 16:23:03 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,6 @@ class BitcoinExchange {
 	private:
 		std::map <int, double> _data;
 		bool _isValidDate(const std::string &dateStr);
+		std::string _dateIntToDateStrFormatted(int dateInt);
+
 };
