@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 23:23:49 by upolat            #+#    #+#             */
-/*   Updated: 2025/04/12 14:05:11 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/12 15:16:17 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 #include <iostream>
 #include <map>
 #include <stdexcept>
+#include <iomanip>
+#include <chrono>
+#include <sstream>
+#include <string>
 
 class BitcoinExchange {
 	public:
@@ -24,8 +28,10 @@ class BitcoinExchange {
 		BitcoinExchange &operator=(const BitcoinExchange &other);
 		~BitcoinExchange();
 
-		void parseCsv();
+		void parseCsv(std::string csvFile);
+		void displayHoldings(std::string inputFile);
 		std::map <int, double> getData() const;
 	private:
 		std::map <int, double> _data;
+		bool _isValidDate(const std::string &dateStr);
 };
