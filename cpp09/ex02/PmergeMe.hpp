@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 21:12:11 by upolat            #+#    #+#             */
-/*   Updated: 2025/04/15 17:23:03 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/15 21:34:54 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,27 +101,35 @@ class PmergeMe {
 		// Starting level == 1
 		// Level 1 index comparison: 0-1, 2-3
 		// Level 2 index comparison: 1-3, 5-7
-		// Level 3 index comparison: 3-7, 11-15
 		template <class T>
 		void pairSort(T &container, int level) {
 			
-			int initial = 2 ** (level - 1) - 1;
-			int offset = 2 ** (level - 1);
-			int size = container.size();
+			size_t initial = (1 << (level - 1)) - 1;
+			size_t offset  = 1 << (level - 1);
+			size_t size = container.size();
 
 			if (initial + offset >= size)
 				return;
 
-			for (size_t i = initial; i < size; i += 2 ** level) {
-				if (i + 2 ** (level - 1) < size) {
-					if (container[i] > container[i + 2 ** (level - 1)])
-						std::swap_ranges(vec.begin() + i - initial,
-										vec.begin() + i + (2 ** (level - 1)),
-										vec.begin() + i + 2 ** (level - 1) - initial);
+			// std::cout << "Container prior to level " << level << ": ";
+
+			// for (auto v : container)
+			// 	std::cout << v << "-";
+			// std::cout << std::endl;
+
+			for (size_t i = initial; i < size; i += (pow(2, level))) {
+				if (i + offset < size) {
+					if (container[i] > container[i + offset]) {
+						std::swap_ranges(container.begin() + i - initial,
+										container.begin() + i - initial + offset,
+										container.begin() + i - initial + offset);
+					}
 				}
 				else
 					break;
 			}
 			pairSort(container, level + 1);
 		}
+
+
 };
