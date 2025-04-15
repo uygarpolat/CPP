@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 21:12:11 by upolat            #+#    #+#             */
-/*   Updated: 2025/04/13 21:55:42 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/15 10:04:35 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,18 @@ class PmergeMe {
 		std::vector<int> getContainerVector();
 		std::deque<int> getContainerDeque();
 
+		// template <class T>
+		// void insertLosers(T& winners, T& losers) {
+		// 	return;
+		// }
+
 		template <class T>
 		void insertionSortMerge(T &container) {
+
+			T leftover;
 				
 			if (container.size() < 2)
-			return;
+				return;
 	
 			std::vector<std::pair<int, int>> pairs;
 		
@@ -50,7 +57,8 @@ class PmergeMe {
 						pairs.push_back(std::make_pair(container[i+1], container[i]));
 				}
 				else
-					pairs.push_back(std::make_pair(container[i], container[i]));
+					leftover.push_back(container[i]);
+					// pairs.push_back(std::make_pair(container[i], container[i]));
 			}
 		
 			// This sorts pairs by the first element of each pair in ascending order.
@@ -70,9 +78,7 @@ class PmergeMe {
 				winners.push_back(pr.first);
 				std::cout << "Pair: " << pr.first << "-" << pr.second << std::endl;
 			}
-		
-			
-		
+
 			return;
 		
 			insertionSortMerge(winners);
@@ -81,18 +87,19 @@ class PmergeMe {
 		
 			T losers;
 			// Skipping index 0, because we already added it as the specialLoser
-			for (size_t i = 1; i < pairs.size(); ++i) {
+			for (size_t i = 1; i < pairs.size(); ++i)
 				losers.push_back(pairs[i].second);
-			}
-		
-			// At this stage, the winners container forms our current main chain.
-			// Next, you'll eventually call a function (e.g., insertLosers) to
-			// insert the remaining losers in an order determined (by Jacobsthal numbers, for example).
-			// For now, we just assume that such a function exists.
+			if (leftover.size())
+				losers.push_back(leftover[0]);
 			
-			// insertLosers(winners, losers);
+			//insertLosers(winners, losers);
 		
-			// Finally, update the original container with the fully sorted result.
 			container = winners;
 		}		
+		
+		// 11 2 17 0 16 8 6 15 10 3 21 1 18 9 14 19 12 5 4 20 13 7
+		template <class T>
+		void pairSort(T &container, int level) {
+			
+		}
 };
