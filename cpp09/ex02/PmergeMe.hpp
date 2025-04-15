@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 21:12:11 by upolat            #+#    #+#             */
-/*   Updated: 2025/04/15 10:04:35 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/15 17:23:03 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,30 @@ class PmergeMe {
 		}		
 		
 		// 11 2 17 0 16 8 6 15 10 3 21 1 18 9 14 19 12 5 4 20 13 7
+		// Starting level == 1
+		// Level 1 index comparison: 0-1, 2-3
+		// Level 2 index comparison: 1-3, 5-7
+		// Level 3 index comparison: 3-7, 11-15
 		template <class T>
 		void pairSort(T &container, int level) {
 			
+			int initial = 2 ** (level - 1) - 1;
+			int offset = 2 ** (level - 1);
+			int size = container.size();
+
+			if (initial + offset >= size)
+				return;
+
+			for (size_t i = initial; i < size; i += 2 ** level) {
+				if (i + 2 ** (level - 1) < size) {
+					if (container[i] > container[i + 2 ** (level - 1)])
+						std::swap_ranges(vec.begin() + i - initial,
+										vec.begin() + i + (2 ** (level - 1)),
+										vec.begin() + i + 2 ** (level - 1) - initial);
+				}
+				else
+					break;
+			}
+			pairSort(container, level + 1);
 		}
 };

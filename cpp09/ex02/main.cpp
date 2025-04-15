@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 21:12:49 by upolat            #+#    #+#             */
-/*   Updated: 2025/04/14 00:50:01 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/15 17:25:18 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,14 @@ int main(int argc, char **argv) {
 
 		std::vector<int> vec = pmm.getContainerVector();
 		std::deque<int> dq = pmm.getContainerDeque();
+
+		pmm.pairSort(vec, 1);
+
+		for (auto v : vec)
+			std::cout << v << "-";
+		
+
+		return;
 		
 		clock_t start = clock();
 		pmm.insertionSortMerge(vec);
