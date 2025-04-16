@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 21:12:49 by upolat            #+#    #+#             */
-/*   Updated: 2025/04/15 21:35:43 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/16 12:13:47 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,27 +22,27 @@ int main(int argc, char **argv) {
 		std::vector<int> vec = pmm.getContainerVector();
 		std::deque<int> dq = pmm.getContainerDeque();
 
-		for (auto v : vec)
-			std::cout << v << "-";
-		std::cout << std::endl;
+		// for (auto v : vec)
+		// 	std::cout << v << "-";
+		// std::cout << std::endl;
 
-		pmm.pairSort(vec, 1);
+		// pmm.pairSort(vec, 1);
 
-		for (auto v : vec)
-			std::cout << v << "-";
-		std::cout << std::endl;
+		// for (auto v : vec)
+		// 	std::cout << v << "-";
+		// std::cout << std::endl;
 		
 
-		return 1;
+
 		
 		clock_t start = clock();
-		pmm.insertionSortMerge(vec);
+		pmm.pairSort(vec, 1);
 		double diff1 = static_cast<double>(clock() - start) / CLOCKS_PER_SEC * 1000000.0;
 		
 		std::cout << "------------" << std::endl;
 		
 		start = clock();
-		pmm.insertionSortMerge(dq);
+		pmm.pairSort(dq, 1);
 		double diff2 = static_cast<double>(clock() - start) / CLOCKS_PER_SEC * 1000000.0;
 
 		std::cout << "Time to process a range of " << argc - 1 << " elements with std::vector : " << std::fixed << diff1 << std::endl; 
