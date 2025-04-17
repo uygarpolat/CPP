@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 21:12:11 by upolat            #+#    #+#             */
-/*   Updated: 2025/04/18 02:13:59 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/18 02:27:57 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,8 +183,17 @@ class PmergeMe {
 		template <class T>
 		void createMainAndPend(T &container, int level) {
 
+
 			if (level == 0)
 				return;
+			
+			std::cout << "Level: " << level << std::endl;
+			std::cout << "Starting container: ";
+			for (auto v : container)
+				std::cout << v << "-";
+			std::cout << std::endl;
+
+			
 			
 			T main;
 			T pend;
@@ -199,7 +208,7 @@ class PmergeMe {
 			while (container.size() > elementSize) {
 				if (alternator % 2 == 0)
 					moveRange(main, container, 0, elementSize, main.size());
-				else if (alternator % 2 == 1)
+				else
 					moveRange(pend, container, 0, elementSize, pend.size());	
 				alternator++;
 			}
@@ -213,7 +222,7 @@ class PmergeMe {
 
 			
 			
-			std::cout << "Level: " << level << std::endl;
+			
 			std::cout << "Main: ";
 			for (auto v : main)
 				std::cout << v << "-";
@@ -231,6 +240,7 @@ class PmergeMe {
 				std::cout << v << "-";
 			std::cout << std::endl;
 			std::cout << "--------------------------" << std::endl;
+			
 			createMainAndPend(container, level - 1);
 	
 		}
