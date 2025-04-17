@@ -6,22 +6,24 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 21:12:11 by upolat            #+#    #+#             */
-/*   Updated: 2025/04/17 15:47:44 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/18 02:13:59 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include <vector>
 #include <deque>
-#include <algorithm> // for std::sort
 #include <stdexcept>
 #include <utility> // for std::pair
 #include <iostream>
+#include <iterator>
+#include <algorithm>
 
 class PmergeMe {
 	private:
-		std::vector<int> _containerVector;
-		std::deque<int> _containerDeque;
+		std::vector<int>	_containerVector;
+		std::deque<int>		_containerDeque;
+		int					_recursionDepth;
 	public:
 		PmergeMe();
 		PmergeMe(const PmergeMe &other);
@@ -127,10 +129,110 @@ class PmergeMe {
 		// 	std::cout << std::endl;
 		// }
 
+		template<class Container>
+		void moveRange(Container& dst,
+						Container& src,
+						typename Container::size_type i,
+						typename Container::size_type n,
+						typename Container::size_type j)
+		{
+		
+			// clamp i and n so we stay in-bounds of src
+			if (i > src.size()) i = src.size();
+			n = std::min(n, src.size() - i);
+		
+			// clamp j so we stay in-bounds of dst
+			if (j > dst.size()) j = dst.size();
+		
+			// locate our iterators
+			auto first      = std::next(src.begin(),       i);
+			auto last       = std::next(first,             n);
+			auto insert_pos = std::next(dst.begin(),       j);
+		
+			// 1) move‑insert [first,last) into dst at insert_pos
+			dst.insert(insert_pos,
+					   std::make_move_iterator(first),
+					   std::make_move_iterator(last));
+		
+			// 2) erase that same range from src
+			src.erase(first, last);
+		}
+		
+
+		template <class T>
+		void insertPend(T& main, T& pend, int level) {
+			if (!pend.size())
+				return;
+			(void)main;
+			(void)level;
+		}
 		
 		template <class T>
 		void mergeInsertSort(T &container) {
+			
 			pairSort(container, 1);
+
+			std::cout << "Container after pairSort: ";
+			for (auto v : container)
+				std::cout << v << "-";
+			std::cout << std::endl;
+			
+			createMainAndPend(container, _recursionDepth);
+		}
+
+		template <class T>
+		void createMainAndPend(T &container, int level) {
+
+			if (level == 0)
+				return;
+			
+			T main;
+			T pend;
+			T leftover;
+			
+			size_t containerSize = container.size();
+			size_t elementSize  = 1 << (level - 1); // This is equal to 2^(level - 1)
+
+			int alternator = 0;
+			moveRange(main, container, 0, elementSize, containerSize);
+
+			while (container.size() > elementSize) {
+				if (alternator % 2 == 0)
+					moveRange(main, container, 0, elementSize, main.size());
+				else if (alternator % 2 == 1)
+					moveRange(pend, container, 0, elementSize, pend.size());	
+				alternator++;
+			}
+
+			moveRange(leftover, container, 0, container.size(), leftover.size());
+
+			insertPend(main, pend, level);
+
+			moveRange(container, main, 0, main.size(), container.size());
+			moveRange(container, leftover, 0, leftover.size(), container.size());
+
+			
+			
+			std::cout << "Level: " << level << std::endl;
+			std::cout << "Main: ";
+			for (auto v : main)
+				std::cout << v << "-";
+			std::cout << std::endl;
+			std::cout << "Pend: ";
+			for (auto v : pend)
+				std::cout << v << "-";
+			std::cout << std::endl;
+			std::cout << "Leftover: ";
+			for (auto v : leftover)
+				std::cout << v << "-";
+			std::cout << std::endl;
+			std::cout << "Container after createMainAndPend: ";
+			for (auto v : container)
+				std::cout << v << "-";
+			std::cout << std::endl;
+			std::cout << "--------------------------" << std::endl;
+			createMainAndPend(container, level - 1);
+	
 		}
 	
 		template <class T>
@@ -142,12 +244,8 @@ class PmergeMe {
 
 			if (initial + offset >= size)
 				return;
-
-			// std::cout << "Container prior to level " << level << ": ";
-
-			// for (auto v : container)
-			// 	std::cout << v << "-";
-			// std::cout << std::endl;
+			
+			_recursionDepth = level;
 
 			for (size_t i = initial; i < size; i += (pow(2, level))) {
 				if (i + offset < size) {
