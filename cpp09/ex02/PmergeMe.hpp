@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 21:12:11 by upolat            #+#    #+#             */
-/*   Updated: 2025/04/18 02:27:57 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/18 14:50:20 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,14 @@ class PmergeMe {
 		// 	std::cout << std::endl;
 		// }
 
+		uint64_t getJacobsthal(size_t n){
+			// returns J(n), where J(0)=0,1,1,3,5,...
+			// (2^n - (-1)^n) / 3
+			uint64_t pow2 = 1ULL << n;
+			int64_t sign = (n & 1) ? -1 : +1;
+			return (pow2 - sign) / 3;
+		}
+
 		template<class Container>
 		void moveRange(Container& dst,
 						Container& src,
@@ -163,8 +171,13 @@ class PmergeMe {
 		void insertPend(T& main, T& pend, int level) {
 			if (!pend.size())
 				return;
+			size_t elementSize  = 1 << (level - 1);
+			size_t jacobsthalCount = 3;
+			while (pend.size()) {
+				uint64_t jacobsthalNum = getJacobsthal(jacobsthalCount++);
+				// More logic will be added here
+			}
 			(void)main;
-			(void)level;
 		}
 		
 		template <class T>

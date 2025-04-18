@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 21:04:36 by upolat            #+#    #+#             */
-/*   Updated: 2025/04/11 01:27:50 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/18 23:01:06 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ template <typename T>
 class MutantStack : public std::stack<T> {
 	public:
 
-		MutantStack();
-		MutantStack(const MutantStack &other);
-		MutantStack &operator=(const MutantStack &other);
-		~MutantStack();
+		MutantStack() = default;
+		MutantStack(const MutantStack &other) = default;
+		MutantStack &operator=(const MutantStack &other) = default;
+		~MutantStack() = default;
 		
 		typedef typename std::stack<T>::container_type::iterator				iterator;
 		typedef typename std::stack<T>::container_type::const_iterator			const_iterator;

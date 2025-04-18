@@ -6,27 +6,11 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 21:04:30 by upolat            #+#    #+#             */
-/*   Updated: 2025/04/11 01:28:24 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/18 23:02:04 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MutantStack.hpp"
-
-template <class T>
-MutantStack<T>::MutantStack() {}
-
-template <class T>
-MutantStack<T>::MutantStack(const MutantStack &o): std::stack<T>(o) {}
-
-template <class T>
-MutantStack<T>::~MutantStack() {}
-
-template <typename T>
-MutantStack<T>& MutantStack<T>::operator=(const MutantStack<T>& other) {
-	if (this != &other)
-		this->std::stack<T>::operator=(other);
-	return *this;
-}
 
 template <typename T>
 typename MutantStack<T>::iterator MutantStack<T>::begin() {
