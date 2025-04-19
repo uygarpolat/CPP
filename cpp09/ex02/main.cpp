@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 21:12:49 by upolat            #+#    #+#             */
-/*   Updated: 2025/04/19 15:59:30 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/19 16:41:35 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int main(int argc, char **argv) {
 
 		std::vector<int> vec = pmm.getContainerVector();
 		std::deque<int> dq = pmm.getContainerDeque();
+		
+		pmm.comparisons = 0;
 
 		std::cout << "Before: ";
 		for (int i : vec)
@@ -35,6 +37,8 @@ int main(int argc, char **argv) {
 		for (int i : vec)
 			std::cout << i << " ";
 		std::cout << std::endl;
+		
+		pmm.comparisons = 0;
 		
 		start = clock();
 		pmm.mergeInsertSort(dq);

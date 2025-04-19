@@ -6,11 +6,13 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 21:12:18 by upolat            #+#    #+#             */
-/*   Updated: 2025/04/15 18:32:21 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/19 16:39:06 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
+
+int PmergeMe::comparisons = 0;
 
 PmergeMe::PmergeMe() : _containerVector(), _containerDeque() {}
 
@@ -48,7 +50,7 @@ PmergeMe::PmergeMe(int argc, char **argv) {
 		catch (std::exception &e) {
 			throw std::invalid_argument("Error: Invalid input: " + arg);
 		}
-		if (num < 0) // Change this to num <= 0 before production
+		if (num <= 0)
 			throw std::invalid_argument("Error: Non-positive integer: " + arg);
 
 		_containerVector.push_back(num);

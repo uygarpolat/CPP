@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 21:12:11 by upolat            #+#    #+#             */
-/*   Updated: 2025/04/19 15:56:15 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/19 16:45:48 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ class PmergeMe {
 		std::vector<int>	_containerVector;
 		std::deque<int>		_containerDeque;
 		int					_recursionDepth;
+		
 	public:
 		PmergeMe();
 		PmergeMe(const PmergeMe &other);
@@ -31,107 +32,21 @@ class PmergeMe {
 		~PmergeMe();
 		PmergeMe(int argc, char **argv);
 
+		template <class T>
+		void mergeInsertSort(T &container) {
+			
+			pairSort(container, 1);
+			createMainAndPend(container, _recursionDepth);
+		}
+
+		static int			comparisons;
+
 		std::vector<int> getContainerVector();
 		std::deque<int> getContainerDeque();
-
-		// template <class T>
-		// void insertLosers(T& winners, T& losers) {
-		// 	return;
-		// }
 		
-		// template <class T>
-		// void mergeInsertSortPairs(std::vector<std::pair<int, int>> pairs) {
-				
-		// 	size_t size = pairs.size();
-			
-		// 	if (size < 2)
-		// 		return;
-			
-		// 	// if size of pairs is 1, sort the pair by the bigger element which is in second position
-		// 	if (size == 2 && pairs[0].second > pairs[1].second) {
-		// 		std::swap(pairs[0], pairs[1]);
-		// 		return;
-		// 	}
-			
+	private:
 	
-		// 	T leftover;		
-			
-		// 	for (size_t i = 0; i < size; i += 2) {
-		// 		if (i + 1 < size) {
-		// 			if (pairs[i] > pairs[i+1])
-		// 				pairs.push_back(std::make_pair(container[i], container[i+1]));
-		// 			else
-		// 				pairs.push_back(std::make_pair(container[i+1], container[i]));
-		// 		}
-		// 		else
-		// 			leftover.push_back(container[i]);
-		// 	}
-
-		// 	mergeInsertSortPairs(pairs);
-
-		// 	return;
-		
-			// // specialLoser is the loser that belonged to the pair with the smallest winner
-			// int specialLoser = pairs[0].second;
-		
-			// T winners;
-			// for (const auto &pr : pairs) {
-			// 	winners.push_back(pr.first);
-			// 	std::cout << "Pair: " << pr.first << "-" << pr.second << std::endl;
-			// }
-
-			// return;
-		
-			// insertionSortMerge(winners);
-		
-			// winners.insert(winners.begin(), specialLoser);
-		
-			// T losers;
-			// // Skipping index 0, because we already added it as the specialLoser
-			// for (size_t i = 1; i < pairs.size(); ++i)
-			// 	losers.push_back(pairs[i].second);
-			// if (leftover.size())
-			// 	losers.push_back(leftover[0]);
-			
-			// insertLosers(winners, losers);
-		
-			// container = winners;
-		// }
-
-		// template <class T>
-		// void mergeInsertSort(T &container) {
-			
-		// 	T leftover;
-			
-		// 	std::vector<std::pair<int, int>> pairs;
-
-		// 	size_t size = container.size();
-		
-			
-		// 	for (size_t i = 0; i < size; i += 2) {
-		// 		if (i + 1 < size) {
-		// 			if (container[i] > container[i+1])
-		// 				pairs.push_back(std::make_pair(container[i], container[i+1]));
-		// 			else
-		// 				pairs.push_back(std::make_pair(container[i+1], container[i]));
-		// 		}
-		// 		else
-		// 			leftover.push_back(container[i]);
-		// 	}
-
-		// 	mergeInsertSortPairs(pairs);
-
-		// 	// Print pairs
-		// 	std::cout << "Pairs after sorting: ";
-		// 	for (const auto &pr : pairs) {
-		// 		std::cout << pr.first << "-" << pr.second << " ";
-		// 	}
-		// 	std::cout << std::endl;
-		// }
-
 		uint64_t getJacobsthal(size_t n){
-			// returns J(n), where J(0)=0,1,1,3,5,...
-			// (2^n - (-1)^n) / 3
 			uint64_t pow2 = 1ULL << n;
 			int64_t sign = (n & 1) ? -1 : +1;
 			return (pow2 - sign) / 3;
@@ -144,16 +59,18 @@ class PmergeMe {
 		{
 			int key = element[elementSize - 1];
 		
-			std::size_t lo = 0;
-			std::size_t hi = container.size() / elementSize;
+			size_t lo = 0;
+			size_t hi = container.size() / elementSize;
 		
 			while (lo < hi) {
-				std::size_t mid = lo + (hi - lo) / 2;
+				size_t mid = lo + (hi - lo) / 2;
 				int midVal = container[mid * elementSize + elementSize - 1];
 				if (midVal < key)
 					lo = mid + 1;
 				else
 					hi = mid;
+				comparisons++;
+				
 			}
 		
 			return lo * elementSize;
@@ -216,13 +133,6 @@ class PmergeMe {
 			
 		}
 		
-		template <class T>
-		void mergeInsertSort(T &container) {
-			
-			pairSort(container, 1);
-			createMainAndPend(container, _recursionDepth);
-		}
-
 		template <class T>
 		void createMainAndPend(T &container, int level) {
 
