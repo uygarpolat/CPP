@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 21:12:11 by upolat            #+#    #+#             */
-/*   Updated: 2025/04/19 15:07:03 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/19 15:56:15 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -209,26 +209,9 @@ class PmergeMe {
 				temp.clear();
 				moveRange(temp, pend, elementSize * (repetition - 1), elementSize, pend.size());
 				size_t insertPos = binary_insert_by_group(main, temp, elementSize);
-				std::cout << "Insert pos is " << insertPos << " for main of ";
-				for (auto v : main)
-					std::cout << v << "-";
-				std::cout << " and temp of ";
-				for (auto v : temp)
-					std::cout << v << "-";
-				std::cout << std::endl;
 				moveRange(main, temp, 0, elementSize, insertPos);
-				assert(temp.size() == 0);
-				std::cout << "And this is the main after insert: ";
-				for (auto v : main)
-					std::cout << v << "-";
-				std::cout << std::endl;
-				
+				// assert(temp.size() == 0);
 			}
-
-			std::cout << "Main after insertPend: ";
-			for (auto v : main)
-				std::cout << v << "-";
-			std::cout << std::endl;
 
 			
 		}
@@ -237,34 +220,21 @@ class PmergeMe {
 		void mergeInsertSort(T &container) {
 			
 			pairSort(container, 1);
-
-			// std::cout << "Container after pairSort: ";
-			// for (auto v : container)
-			// 	std::cout << v << "-";
-			// std::cout << std::endl;
-			
 			createMainAndPend(container, _recursionDepth);
 		}
 
 		template <class T>
 		void createMainAndPend(T &container, int level) {
 
-
 			if (level == 0)
 				return;
-			
-			// std::cout << "Level: " << level << std::endl;
-			// std::cout << "Starting container: ";
-			// for (auto v : container)
-			// 	std::cout << v << "-";
-			// std::cout << std::endl;
 
 			T main;
 			T pend;
 			T leftover;
 			
 			size_t containerSize = container.size();
-			size_t elementSize  = 1 << (level - 1); // This is equal to 2^(level - 1)
+			size_t elementSize  = 1 << (level - 1);
 
 			int alternator = 0;
 			moveRange(main, container, 0, elementSize, containerSize);
@@ -276,38 +246,13 @@ class PmergeMe {
 					moveRange(pend, container, 0, elementSize, pend.size());	
 				alternator++;
 			}
-
-			std::cout << "Pend: ";
-			for (auto v : pend)
-				std::cout << v << "-";
-			std::cout << std::endl;
-
 			
-
 			moveRange(leftover, container, 0, container.size(), leftover.size());
 
 			insertPend(main, pend, level);
 
-			std::cout << "Main: ";
-			for (auto v : main)
-				std::cout << v << "-";
-			std::cout << std::endl;
-
-			std::cout << "Leftover: ";
-			for (auto v : leftover)
-				std::cout << v << "-";
-			std::cout << std::endl;
-
 			moveRange(container, main, 0, main.size(), container.size());
 			moveRange(container, leftover, 0, leftover.size(), container.size());
-
-			
-			std::cout << "Container after insertPend (level " << level << ")" << std::endl;
-			for (auto v : container)
-				std::cout << v << "-";
-			std::cout << std::endl;
-			std::cout << "--------------------------" << std::endl;
-			
 			
 			createMainAndPend(container, level - 1);
 	

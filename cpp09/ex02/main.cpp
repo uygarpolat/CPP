@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 21:12:49 by upolat            #+#    #+#             */
-/*   Updated: 2025/04/18 00:26:18 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/19 15:59:30 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,29 +21,27 @@ int main(int argc, char **argv) {
 
 		std::vector<int> vec = pmm.getContainerVector();
 		std::deque<int> dq = pmm.getContainerDeque();
+
+		std::cout << "Before: ";
+		for (int i : vec)
+			std::cout << i << " ";
+		std::cout << std::endl;
 		
-		
-		//clock_t start = clock();
+		clock_t start = clock();
 		pmm.mergeInsertSort(vec);
-		//double diff1 = static_cast<double>(clock() - start) / CLOCKS_PER_SEC * 1000000.0;
+		double diff1 = static_cast<double>(clock() - start) / CLOCKS_PER_SEC * 1000000.0;
 
-		// for (auto v : vec)
-		// 	std::cout << v << "-";
-		// std::cout << std::endl;
+		std::cout << "After: ";
+		for (int i : vec)
+			std::cout << i << " ";
+		std::cout << std::endl;
 		
-		// std::cout << "------------" << std::endl;
-		
-		// start = clock();
-		std::cout << "===================== Sorting with deque =====================" << std::endl;
+		start = clock();
 		pmm.mergeInsertSort(dq);
-		// double diff2 = static_cast<double>(clock() - start) / CLOCKS_PER_SEC * 1000000.0;
+		double diff2 = static_cast<double>(clock() - start) / CLOCKS_PER_SEC * 1000000.0;
 
-		// for (auto v : dq)
-		// 	std::cout << v << "-";
-		// std::cout << std::endl;
-
-		// std::cout << "Time to process a range of " << argc - 1 << " elements with std::vector : " << std::fixed << diff1 << std::endl; 
-		// std::cout << "Time to process a range of " << argc - 1 << " elements with std::deque : " << std::fixed << diff2 << std::endl; 
+		std::cout << "Time to process a range of " << argc - 1 << " elements with std::vector : " << std::fixed << diff1 << std::endl; 
+		std::cout << "Time to process a range of " << argc - 1 << " elements with std::deque : " << std::fixed << diff2 << std::endl; 
 	}
 	catch (std::exception &e) {
 		std::cerr << e.what() << std::endl;
