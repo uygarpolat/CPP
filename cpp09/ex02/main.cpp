@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 21:12:49 by upolat            #+#    #+#             */
-/*   Updated: 2025/04/19 16:57:48 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/19 17:14:01 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int main(int argc, char **argv) {
 		
 		pmm.comparisons = 0;
 
-		std::cout << "Before: ";
+		std::cout << "Before for std::vector: ";
 		for (int i : vec)
 			std::cout << i << " ";
 		std::cout << std::endl;
@@ -33,19 +33,23 @@ int main(int argc, char **argv) {
 		pmm.mergeInsertSort(vec);
 		double diff1 = static_cast<double>(clock() - start) / CLOCKS_PER_SEC * 1000000.0;
 
-		std::cout << "After for std::vector: ";
+		std::cout << "After for std::vector:   ";
 		for (int i : vec)
 			std::cout << i << " ";
 		std::cout << std::endl;
 		std::cout << "Number of comparisons for std::vector : " << pmm.comparisons << std::endl;
 		
 		pmm.comparisons = 0;
+		std::cout << "Before for std::deque:  ";
+		for (int i : dq)
+			std::cout << i << " ";
+		std::cout << std::endl;
 		
 		start = clock();
 		pmm.mergeInsertSort(dq);
 		double diff2 = static_cast<double>(clock() - start) / CLOCKS_PER_SEC * 1000000.0;
 
-		std::cout << "After for std::deque:  ";
+		std::cout << "After for std::deque:    ";
 		for (int i : dq)
 			std::cout << i << " ";
 		std::cout << std::endl;

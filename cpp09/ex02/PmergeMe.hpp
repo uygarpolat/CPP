@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 21:12:11 by upolat            #+#    #+#             */
-/*   Updated: 2025/04/19 16:49:30 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/19 17:07:12 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,7 +180,7 @@ class PmergeMe {
 			
 			_recursionDepth = level;
 
-			for (size_t i = initial; i < size; i += (pow(2, level))) {
+			for (size_t i = initial; i < size; i += (1u << level)) {
 				if (i + offset < size) {
 					if (container[i] > container[i + offset]) {
 						std::swap_ranges(container.begin() + i - initial,
