@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 21:12:11 by upolat            #+#    #+#             */
-/*   Updated: 2025/04/18 14:50:20 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/19 15:07:03 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 #include <vector>
 #include <deque>
 #include <stdexcept>
-#include <utility> // for std::pair
 #include <iostream>
 #include <iterator>
 #include <algorithm>
+#include <assert.h>
 
 class PmergeMe {
 	private:
@@ -137,6 +137,28 @@ class PmergeMe {
 			return (pow2 - sign) / 3;
 		}
 
+		template<typename Container>
+		size_t binary_insert_by_group(	const Container& container,
+										const Container& element,
+										size_t elementSize)
+		{
+			int key = element[elementSize - 1];
+		
+			std::size_t lo = 0;
+			std::size_t hi = container.size() / elementSize;
+		
+			while (lo < hi) {
+				std::size_t mid = lo + (hi - lo) / 2;
+				int midVal = container[mid * elementSize + elementSize - 1];
+				if (midVal < key)
+					lo = mid + 1;
+				else
+					hi = mid;
+			}
+		
+			return lo * elementSize;
+		}
+
 		template<class Container>
 		void moveRange(Container& dst,
 						Container& src,
@@ -171,13 +193,44 @@ class PmergeMe {
 		void insertPend(T& main, T& pend, int level) {
 			if (!pend.size())
 				return;
-			size_t elementSize  = 1 << (level - 1);
+			size_t elementSize = 1 << (level - 1);
 			size_t jacobsthalCount = 3;
+			uint64_t repetition = getJacobsthal(jacobsthalCount - 2) * 2;
+			T temp;
+			
 			while (pend.size()) {
-				uint64_t jacobsthalNum = getJacobsthal(jacobsthalCount++);
-				// More logic will be added here
+				if (!repetition)
+					repetition = getJacobsthal(jacobsthalCount - 2) * 2;
+				else
+					repetition--;
+				if (repetition > pend.size())
+					repetition = pend.size();
+				
+				temp.clear();
+				moveRange(temp, pend, elementSize * (repetition - 1), elementSize, pend.size());
+				size_t insertPos = binary_insert_by_group(main, temp, elementSize);
+				std::cout << "Insert pos is " << insertPos << " for main of ";
+				for (auto v : main)
+					std::cout << v << "-";
+				std::cout << " and temp of ";
+				for (auto v : temp)
+					std::cout << v << "-";
+				std::cout << std::endl;
+				moveRange(main, temp, 0, elementSize, insertPos);
+				assert(temp.size() == 0);
+				std::cout << "And this is the main after insert: ";
+				for (auto v : main)
+					std::cout << v << "-";
+				std::cout << std::endl;
+				
 			}
-			(void)main;
+
+			std::cout << "Main after insertPend: ";
+			for (auto v : main)
+				std::cout << v << "-";
+			std::cout << std::endl;
+
+			
 		}
 		
 		template <class T>
@@ -185,10 +238,10 @@ class PmergeMe {
 			
 			pairSort(container, 1);
 
-			std::cout << "Container after pairSort: ";
-			for (auto v : container)
-				std::cout << v << "-";
-			std::cout << std::endl;
+			// std::cout << "Container after pairSort: ";
+			// for (auto v : container)
+			// 	std::cout << v << "-";
+			// std::cout << std::endl;
 			
 			createMainAndPend(container, _recursionDepth);
 		}
@@ -200,14 +253,12 @@ class PmergeMe {
 			if (level == 0)
 				return;
 			
-			std::cout << "Level: " << level << std::endl;
-			std::cout << "Starting container: ";
-			for (auto v : container)
-				std::cout << v << "-";
-			std::cout << std::endl;
+			// std::cout << "Level: " << level << std::endl;
+			// std::cout << "Starting container: ";
+			// for (auto v : container)
+			// 	std::cout << v << "-";
+			// std::cout << std::endl;
 
-			
-			
 			T main;
 			T pend;
 			T leftover;
@@ -218,7 +269,7 @@ class PmergeMe {
 			int alternator = 0;
 			moveRange(main, container, 0, elementSize, containerSize);
 
-			while (container.size() > elementSize) {
+			while (container.size() >= elementSize) {
 				if (alternator % 2 == 0)
 					moveRange(main, container, 0, elementSize, main.size());
 				else
@@ -226,33 +277,37 @@ class PmergeMe {
 				alternator++;
 			}
 
+			std::cout << "Pend: ";
+			for (auto v : pend)
+				std::cout << v << "-";
+			std::cout << std::endl;
+
+			
+
 			moveRange(leftover, container, 0, container.size(), leftover.size());
 
 			insertPend(main, pend, level);
+
+			std::cout << "Main: ";
+			for (auto v : main)
+				std::cout << v << "-";
+			std::cout << std::endl;
+
+			std::cout << "Leftover: ";
+			for (auto v : leftover)
+				std::cout << v << "-";
+			std::cout << std::endl;
 
 			moveRange(container, main, 0, main.size(), container.size());
 			moveRange(container, leftover, 0, leftover.size(), container.size());
 
 			
-			
-			
-			std::cout << "Main: ";
-			for (auto v : main)
-				std::cout << v << "-";
-			std::cout << std::endl;
-			std::cout << "Pend: ";
-			for (auto v : pend)
-				std::cout << v << "-";
-			std::cout << std::endl;
-			std::cout << "Leftover: ";
-			for (auto v : leftover)
-				std::cout << v << "-";
-			std::cout << std::endl;
-			std::cout << "Container after createMainAndPend: ";
+			std::cout << "Container after insertPend (level " << level << ")" << std::endl;
 			for (auto v : container)
 				std::cout << v << "-";
 			std::cout << std::endl;
 			std::cout << "--------------------------" << std::endl;
+			
 			
 			createMainAndPend(container, level - 1);
 	
