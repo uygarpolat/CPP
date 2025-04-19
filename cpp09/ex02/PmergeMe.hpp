@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 21:12:11 by upolat            #+#    #+#             */
-/*   Updated: 2025/04/19 16:45:48 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/19 16:49:30 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,6 +187,7 @@ class PmergeMe {
 										container.begin() + i - initial + offset,
 										container.begin() + i - initial + offset);
 					}
+					comparisons++;
 				}
 				else
 					break;
