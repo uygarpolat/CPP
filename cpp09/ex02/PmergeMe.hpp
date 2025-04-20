@@ -6,11 +6,12 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 21:12:11 by upolat            #+#    #+#             */
-/*   Updated: 2025/04/19 17:07:12 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/20 03:04:21 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
+
 #include <vector>
 #include <deque>
 #include <stdexcept>
@@ -57,8 +58,9 @@ class PmergeMe {
 										const Container& element,
 										size_t elementSize)
 		{
+			
 			int key = element[elementSize - 1];
-		
+			
 			size_t lo = 0;
 			size_t hi = container.size() / elementSize;
 		
@@ -84,24 +86,21 @@ class PmergeMe {
 						typename Container::size_type j)
 		{
 		
-			// clamp i and n so we stay in-bounds of src
-			if (i > src.size()) i = src.size();
+			if (i > src.size())
+				i = src.size();
 			n = std::min(n, src.size() - i);
 		
-			// clamp j so we stay in-bounds of dst
-			if (j > dst.size()) j = dst.size();
+			if (j > dst.size())
+				j = dst.size();
 		
-			// locate our iterators
-			auto first      = std::next(src.begin(),       i);
-			auto last       = std::next(first,             n);
-			auto insert_pos = std::next(dst.begin(),       j);
+			auto first      = std::next(src.begin(), i);
+			auto last       = std::next(first, n);
+			auto insert_pos = std::next(dst.begin(), j);
 		
-			// 1) move‑insert [first,last) into dst at insert_pos
 			dst.insert(insert_pos,
 					   std::make_move_iterator(first),
 					   std::make_move_iterator(last));
 		
-			// 2) erase that same range from src
 			src.erase(first, last);
 		}
 		
@@ -118,19 +117,18 @@ class PmergeMe {
 			while (pend.size()) {
 				if (!repetition)
 					repetition = getJacobsthal(jacobsthalCount - 2) * 2;
-				else
-					repetition--;
-				if (repetition > pend.size())
-					repetition = pend.size();
+
+				if (repetition * elementSize > pend.size())
+					repetition = pend.size() / elementSize;
 				
 				temp.clear();
-				moveRange(temp, pend, elementSize * (repetition - 1), elementSize, pend.size());
-				size_t insertPos = binary_insert_by_group(main, temp, elementSize);
+				
+				moveRange(temp, pend, elementSize * (repetition - 1), elementSize, temp.size());
+				size_t insertPos = binary_insert_by_group(main, temp, elementSize); //
 				moveRange(main, temp, 0, elementSize, insertPos);
-				// assert(temp.size() == 0);
+				
+				repetition--;
 			}
-
-			
 		}
 		
 		template <class T>
@@ -194,6 +192,4 @@ class PmergeMe {
 			}
 			pairSort(container, level + 1);
 		}
-
-	
 };
