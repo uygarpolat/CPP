@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 21:12:49 by upolat            #+#    #+#             */
-/*   Updated: 2025/04/20 03:04:36 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/20 03:13:42 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ int main(int argc, char **argv) {
 			std::cout << i << " ";
 		std::cout << std::endl;
 		
-		clock_t start = clock();
+		auto t0 = std::chrono::high_resolution_clock::now();
 		pmm.mergeInsertSort(vec);
-		double diff1 = static_cast<double>(clock() - start) / CLOCKS_PER_SEC * 1000000.0;
+		auto t1 = std::chrono::high_resolution_clock::now();
 
 		std::cout << "After for std::vector:   ";
 		for (int i : vec)
@@ -48,9 +48,9 @@ int main(int argc, char **argv) {
 			std::cout << i << " ";
 		std::cout << std::endl;
 		
-		start = clock();
+		auto t2 = std::chrono::high_resolution_clock::now();
 		pmm.mergeInsertSort(dq);
-		double diff2 = static_cast<double>(clock() - start) / CLOCKS_PER_SEC * 1000000.0;
+		auto t3 = std::chrono::high_resolution_clock::now();
 
 		std::cout << "After for std::deque:    ";
 		for (int i : dq)
@@ -61,8 +61,12 @@ int main(int argc, char **argv) {
 		for (size_t i = 1; i < dq.size(); i++)
 			assert(dq[i] >= dq[i - 1]);
 
-		std::cout << "Time to process a range of " << argc - 1 << " elements with std::vector : " << std::fixed << diff1 << std::endl; 
-		std::cout << "Time to process a range of " << argc - 1 << " elements with std::deque  : " << std::fixed << diff2 << std::endl; 
+		std::chrono::duration<double, std::micro> us0 = t1 - t0;
+		std::cout << "Time to process a range of " << argc - 1 << " elements with std::vector : " << std::fixed << std::setprecision(3) << us0.count() << " µs\n";
+
+		std::chrono::duration<double, std::micro> us1 = t3 - t2;
+		std::cout << "Time to process a range of " << argc - 1 << " elements with std::deque  : " << std::fixed << std::setprecision(3) << us1.count() << " µs\n";
+		
 	}
 	catch (std::exception &e) {
 		std::cerr << e.what() << std::endl;
