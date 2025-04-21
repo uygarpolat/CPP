@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 22:32:50 by upolat            #+#    #+#             */
-/*   Updated: 2025/04/10 20:34:55 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/21 23:38:36 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ int main(void) {
 	try {
 		std::cout << GREEN << "\n===== TEST 2 =====" << DEFAULT << std::endl;
 		std::cout << "Testing filling the container and then trying to overfill it" << DEFAULT << std::endl;
-		Span span2(5);
+		Span span2(6);
+		span2.addNumber(1);
 		std::vector<int> newData = {43, 65, -12, 107, 5};
 	
 		span2.addNumbers(newData);

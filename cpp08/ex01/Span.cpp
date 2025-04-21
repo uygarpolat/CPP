@@ -47,11 +47,11 @@ long long Span::longestSpan() {
 	return static_cast<long long >(max) - static_cast<long long>(min);
 }
 
-void	Span::addNumbers(std::vector<int> newData) {
+void	Span::addNumbers(std::vector<int>& newData) {
 	if (newData.size() + _data.size() > _N)
 		throw std::runtime_error("Error: Attempting to overflow the container");
 	else
-		_data.assign(newData.begin(), newData.end());
+		_data.insert(_data.end(), newData.begin(), newData.end());
 }
 
 void Span::printContainer() const {

@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 22:09:58 by upolat            #+#    #+#             */
-/*   Updated: 2025/04/10 18:44:05 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/21 23:40:22 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ class Span {
 		Span(unsigned int N);
 		
 		void				addNumber(int num);
-		void				addNumbers(std::vector<int> newData);
+		void				addNumbers(std::vector<int>& newData);
 		long long			shortestSpan();
 		long long			longestSpan();
 		void				printContainer() const;
