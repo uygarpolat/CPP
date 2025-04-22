@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 23:23:46 by upolat            #+#    #+#             */
-/*   Updated: 2025/04/12 21:02:53 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/22 17:22:40 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void BitcoinExchange::parseCsv(std::string csvFile) {
 	
 	std::ifstream file(csvFile);
 	if (!file.is_open())
-		throw std::runtime_error("Error: could not open file");
+		throw std::runtime_error("Error: could not open file.");
 		
 	std::string line;
 	while (std::getline(file, line)) {
@@ -55,7 +55,7 @@ void BitcoinExchange::displayHoldings(std::string inputFile) {
 	
 	std::ifstream file(inputFile);
 	if (!file.is_open())
-		throw std::runtime_error("Error: could not open file");
+		throw std::runtime_error("Error: could not open file.");
 		
 	std::string amountStr = "";
 	std::string line;
