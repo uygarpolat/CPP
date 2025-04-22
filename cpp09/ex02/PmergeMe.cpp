@@ -6,13 +6,11 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 21:12:18 by upolat            #+#    #+#             */
-/*   Updated: 2025/04/20 03:16:10 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/22 21:12:12 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
-
-int PmergeMe::comparisons = 0;
 
 PmergeMe::PmergeMe() : _containerVector(), _containerDeque() {}
 

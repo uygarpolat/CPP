@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 21:12:11 by upolat            #+#    #+#             */
-/*   Updated: 2025/04/20 03:08:38 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/22 21:11:29 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,15 @@ class PmergeMe {
 
 		template <class T>
 		void mergeInsertSort(T &container) {
-			
 			pairSort(container, 1);
 			createMainAndPend(container, _recursionDepth);
 		}
-
-		static int			comparisons;
 
 		std::vector<int> getContainerVector();
 		std::deque<int> getContainerDeque();
 		
 	private:
-	
+
 		uint64_t getJacobsthal(size_t n){
 			uint64_t pow2 = 1ULL << n;
 			int64_t sign = (n & 1) ? -1 : +1;
@@ -72,9 +69,7 @@ class PmergeMe {
 				if (midVal < key)
 					lo = mid + 1;
 				else
-					hi = mid;
-				comparisons++;
-				
+					hi = mid;				
 			}
 		
 			return lo * elementSize;
@@ -175,7 +170,7 @@ class PmergeMe {
 			size_t offset  = 1 << (level - 1);
 			size_t size = container.size();
 
-			if (initial + offset >= size)
+			if (initial + offset > size)
 				return;
 			
 			_recursionDepth = level;
@@ -187,7 +182,6 @@ class PmergeMe {
 										container.begin() + i - initial + offset,
 										container.begin() + i - initial + offset);
 					}
-					comparisons++;
 				}
 				else
 					break;
