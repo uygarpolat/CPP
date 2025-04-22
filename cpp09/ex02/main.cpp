@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 21:12:49 by upolat            #+#    #+#             */
-/*   Updated: 2025/04/22 21:22:28 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/22 22:00:11 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int main(int argc, char **argv) {
 		for (size_t i = 1; i < vec.size(); i++)
 			assert(vec[i] >= vec[i - 1]);
 		
-		std::cout << "Before for std::deque : ";
+		std::cout << std::endl << "Before for std::deque : ";
 		for (int i : dq)
 			std::cout << i << " ";
 		std::cout << std::endl;
