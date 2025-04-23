@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 23:23:43 by upolat            #+#    #+#             */
-/*   Updated: 2025/04/22 22:06:46 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/23 23:09:18 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int main(int argc, char** argv) {
 	
 	BitcoinExchange btc;
 	try {
-		if (argc < 2)
+		if (argc != 2)
 			throw std::runtime_error("Error: could not open file.");
 
 		std::string csvFile = "data.csv";

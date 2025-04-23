@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 23:23:46 by upolat            #+#    #+#             */
-/*   Updated: 2025/04/23 21:45:37 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/23 23:50:20 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,7 @@ void BitcoinExchange::parseCsv(std::string csvFile) {
 	std::ifstream file(csvFile);
 	if (!file.is_open())
 		throw std::runtime_error("Error: could not open file.");
-		
-	// if the file is empty, we throw an error
-	
+			
 	std::string line;
 	while (std::getline(file, line)) {
 		try {
@@ -42,8 +40,21 @@ void BitcoinExchange::parseCsv(std::string csvFile) {
 			// replace all '-' with empty string, super fancy
 			date.erase(std::remove(date.begin(), date.end(), '-'), date.end());
 			int dateInt = stoi(date);
+
+			std::string rateStr = line.substr(line.find(',') + 1);
+
+			// trim leading and trailing whitespace
+			rateStr.erase(0, rateStr.find_first_not_of(" \t"));
+			rateStr.erase(rateStr.find_last_not_of(" \t") + 1);
 			
-			double rate = stod(line.substr(line.find(',') + 1));
+			// if rateStr has non-numeric characters (except a decimal point),
+			// or if there are more than one decimal point, we throw an error
+			if (rateStr.find_first_not_of("0123456789.") != std::string::npos ||
+				rateStr.find('.') != rateStr.rfind('.'))
+				throw std::runtime_error("Error: bad input => " + rateStr);
+			
+			double rate = stod(rateStr);
+			
 			_data[dateInt] = rate;
 		}
 		catch (std::exception &e) {
@@ -98,7 +109,7 @@ void BitcoinExchange::displayHoldings(std::string inputFile) {
 			amountStr.erase(0, amountStr.find_first_not_of(" \t"));
 			amountStr.erase(amountStr.find_last_not_of(" \t") + 1);
 			
-			// if amountStr has non-numeric characters or a decimal point,
+			// if amountStr has non-numeric characters (except a decimal point),
 			// or if there are more than one decimal point, we throw an error
 			if (amountStr.find_first_not_of("0123456789.") != std::string::npos ||
 				amountStr.find('.') != amountStr.rfind('.'))
