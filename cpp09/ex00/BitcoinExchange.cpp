@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 23:23:46 by upolat            #+#    #+#             */
-/*   Updated: 2025/04/22 17:22:40 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/23 21:45:37 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void BitcoinExchange::parseCsv(std::string csvFile) {
 	if (!file.is_open())
 		throw std::runtime_error("Error: could not open file.");
 		
+	// if the file is empty, we throw an error
+	
 	std::string line;
 	while (std::getline(file, line)) {
 		try {
@@ -75,6 +77,11 @@ void BitcoinExchange::displayHoldings(std::string inputFile) {
 			int dateInt = stoi(date);
 
 			int beginningOfHistoricalData = _data.begin()->first;
+			int endOfHistoricalData = _data.rbegin()->first;
+			
+			if (dateInt > endOfHistoricalData)
+				dateInt = endOfHistoricalData;
+				
 			while (dateInt >= beginningOfHistoricalData) {
 				if (_data.contains(dateInt))
 					break;
@@ -86,11 +93,22 @@ void BitcoinExchange::displayHoldings(std::string inputFile) {
 				throw std::runtime_error("Error: historical data not found => " + dateBackup);
 
 			amountStr = line.substr(line.find('|') + 1);
+
+			// trim leading and trailing whitespace
+			amountStr.erase(0, amountStr.find_first_not_of(" \t"));
+			amountStr.erase(amountStr.find_last_not_of(" \t") + 1);
+			
+			// if amountStr has non-numeric characters or a decimal point,
+			// or if there are more than one decimal point, we throw an error
+			if (amountStr.find_first_not_of("0123456789.") != std::string::npos ||
+				amountStr.find('.') != amountStr.rfind('.'))
+				throw std::runtime_error("Error: bad input => " + amountStr);
+			
 			double amount = stod(amountStr);
 
-			if (amount < 0)
+			if (amount <= 0)
 				throw std::runtime_error("Error: not a positive number.");
-			if (amount > 1000)
+			if (amount >= 1000)
 				throw std::runtime_error("Error: too large a number.");
 
 			std::cout << dateBackup << "=> " << amount << " = " << amount * _data[dateInt] << std::endl;
