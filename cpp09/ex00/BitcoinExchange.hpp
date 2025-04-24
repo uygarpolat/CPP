@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 23:23:49 by upolat            #+#    #+#             */
-/*   Updated: 2025/04/12 20:59:52 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/24 14:55:46 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include <chrono>
 #include <sstream>
 #include <string>
+#include <algorithm>
 
 class BitcoinExchange {
 	public:
