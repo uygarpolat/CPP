@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 01:03:40 by upolat            #+#    #+#             */
-/*   Updated: 2025/04/12 03:06:16 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/25 21:42:19 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,13 @@ RPN::~RPN() {}
 RPN::RPN(std::string argv) : _data(), _argv(argv) {}
 
 int RPN::parseRpn() {
+
+	// Erroring out if unary minus is encountered
+	for (size_t i = 0; i + 1 < _argv.size(); ++i) {
+        if ((_argv[i] == '-'  || _argv[i] == '+') && isdigit(_argv[i+1]))
+            throw std::runtime_error("Error");
+    }
+	
 	for (auto c : _argv) {
 		if (isspace(c))
 			continue;
