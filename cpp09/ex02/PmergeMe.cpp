@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 21:12:18 by upolat            #+#    #+#             */
-/*   Updated: 2025/04/22 21:12:12 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/25 20:25:13 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,10 @@ PmergeMe::PmergeMe(int argc, char **argv) {
 			throw std::invalid_argument("Error: Invalid input: " + arg);
 		}
 		if (num <= 0)
-			throw std::invalid_argument("Error: Non-positive integer: " + arg);
+			throw std::invalid_argument("Error: Non-positive number: " + arg);
+
+		if (arg.find_first_not_of("0123456789") != std::string::npos)
+			throw std::invalid_argument("Error: Invalid input: " + arg);
 
 		_containerVector.push_back(num);
 		_containerDeque.push_back(num);
