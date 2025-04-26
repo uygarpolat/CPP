@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 21:12:18 by upolat            #+#    #+#             */
-/*   Updated: 2025/04/25 20:25:13 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/27 00:10:23 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,12 @@ std::vector<int> PmergeMe::getContainerVector() {
 
 std::deque<int> PmergeMe::getContainerDeque() {
 	return _containerDeque;
+}
+
+uint64_t PmergeMe::getJacobsthal(size_t n){
+	uint64_t pow2 = 1ULL << n;
+	int64_t sign = (n & 1) ? -1 : +1;
+	return (pow2 - sign) / 3;
 }
 
 PmergeMe::PmergeMe(int argc, char **argv) {

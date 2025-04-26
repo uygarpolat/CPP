@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 21:12:11 by upolat            #+#    #+#             */
-/*   Updated: 2025/04/22 21:11:29 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/27 00:10:39 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,7 @@ class PmergeMe {
 		
 	private:
 
-		uint64_t getJacobsthal(size_t n){
-			uint64_t pow2 = 1ULL << n;
-			int64_t sign = (n & 1) ? -1 : +1;
-			return (pow2 - sign) / 3;
-		}
+		uint64_t getJacobsthal(size_t n);
 
 		template<typename Container>
 		size_t binary_insert_by_group(	const Container& container,
