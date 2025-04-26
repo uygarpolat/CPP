@@ -6,7 +6,7 @@
 /*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 00:46:09 by upolat            #+#    #+#             */
-/*   Updated: 2025/04/12 02:44:35 by upolat           ###   ########.fr       */
+/*   Updated: 2025/04/26 13:07:35 by upolat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <iostream>
 #include <stack>
 #include <stdexcept>
+#include <string.h>
 
 class RPN {
 	public:
