@@ -10,11 +10,11 @@ All modules have been passed with full marks and all but one modules have been p
 
 - **Module 00:** Basics of C++ sytnax and the concept of classes, and helped move beyond a C-style approach to string manipulation.
 - **Module 01:** Memory allocation, references, pointers to members.
-- **Module 02:** Learn ad-hoc polymorphism, operator overloading, and implement the orhtodox canonical form (default constructor, copy constructor, copy assignment operator, destructor).
+- **Module 02:** Learn ad-hoc polymorphism, operator overloading, and implement the orthodox canonical form (default constructor, copy constructor, copy assignment operator, destructor).
 - **Module 03:** Dove into inheritance, base and derived classes, protected class members.
 - **Module 04:** Polymorphism, abstract classes, and interfaces to build extendible class hierarchies.
 - **Module 05:** Explore exception handling with try/catch blocks, throw expressions, and defining custom exception types depending on the needs.
 - **Module 06:** Examine the various C++ casts (static_cast, dynamic_cast, reinterpret_cast, const_cast) and their appropriate usecases.
-- **Module 07:** aearning about templates in C++, including function templates, class templates, and template specialization.
+- **Module 07:** Learning about templates in C++, including function templates, class templates, and template specialization.
 - **Module 08:** Starting this module, we were allowed to use STL. So I was able to get familiarized with containers, iterators, and algorithms.
 - **Module 09:** Full-blown use of STL containers, iterators, and algorithms to implement tasks like complex string parsing and data sorting.
